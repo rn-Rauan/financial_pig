@@ -42,13 +42,17 @@ validation:
       fixed/construction-cost record + history.
   11. `011_inativar_registro.sql` — real `inativar_registro` RPC: soft delete
       (ativo = false) with compensating stock reversal for sales/purchases.
+  12. `012_inicializar_dados.sql` — idempotent per-user setup RPC
+      (`inicializar_dados`): creates the settings row and seeds default stock
+      items. The app calls it automatically after login.
 - Preferred migration command after `supabase login` and `supabase link`:
   `supabase db push --dry-run`, then `supabase db push`.
 - **RLS is enabled** on all business tables; each policy scopes rows to
   `auth.uid()`. Verify with a second user (or by querying without a session)
   that no cross-user rows are visible.
-- Default stock items (Porcos/leitões `cabeca`, Milho `saca`, Ração `saca`) are
-  seeded after first login/configuration, per `schema.md`.
+- Default stock items (Porcos/leitões `cabeca`, Milho `saca`, Ração `saca`) and
+  the settings row are seeded automatically on first login via the
+  `inicializar_dados` RPC (migration 012); no manual insert is needed.
 - Local run: `npm install` then `npm run dev`, opened at a mobile-width
   viewport. Do not add or run automated test commands.
 
@@ -238,6 +242,25 @@ Open the "Relatórios" tab (Resumo / Porcos / Histórico sub-tabs).
 > Note on scope: `inativar_registro` also supports `clientes`, but there is no
 > customers screen in the MVP, so customer inactivation is not surfaced in the
 > UI. Stock items are not inactivated (they are managed via movements).
+
+### US8 - Install and Operate as PWA (T095) — pending
+
+Validate on the deployed URL (HTTPS) and a mobile browser (Android Chrome).
+
+1. First login auto-seeds data: the settings row and the three default stock
+   items appear (Estoque shows Porcos/leitões, Milho, Ração); pig/corn/feed
+   purchases and sales now resolve their stock item instead of failing.
+2. Installability: the browser offers "Adicionar à tela inicial" / the Perfil
+   screen shows the "Instalar app" button; installing adds the Financial Pig
+   icon (pig snout, pink) and name.
+3. Standalone: the installed app opens without browser chrome; Perfil shows
+   "✓ Instalado". Theme color is the brand pink.
+4. Offline shell: with the app open, toggling offline still loads the app shell
+   on refresh (service worker navigateFallback); data actions require network
+   (Supabase) and show error states when offline.
+5. Mobile layout: forms fit a phone width, inputs do not trigger iOS zoom (16px),
+   and the bottom navigation (5 tabs) is reachable with the thumb.
+6. README documents the deployed URL, env vars, build, and SPA rewrite.
 
 ## Final Delivery Gate
 

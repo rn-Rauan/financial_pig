@@ -3,15 +3,28 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
-// PWA configuration is finalized in a later phase (US8). This baseline keeps the
-// app installable during development and foundational work.
+// PWA: auto-updating service worker that precaches the app shell. The web app
+// manifest is maintained as a static file (public/manifest.webmanifest) and
+// linked from index.html, so the plugin uses manifest: false. navigateFallback
+// serves index.html for client-side routes so deep links work offline (SPA).
 export default defineConfig({
   plugins: [
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["icons/icon.svg"],
       manifest: false,
+      includeAssets: [
+        "icons/icon.svg",
+        "icons/icon-180.png",
+        "icons/icon-192.png",
+        "icons/icon-512.png",
+      ],
+      workbox: {
+        navigateFallback: "index.html",
+        // Supabase calls are cross-origin POST/GET; never serve the SPA shell
+        // for the API path if it is ever same-origin proxied.
+        navigateFallbackDenylist: [/^\/rest\//, /^\/auth\//],
+      },
     }),
   ],
   resolve: {

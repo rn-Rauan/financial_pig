@@ -97,6 +97,34 @@ supabase db push
 The single app user is created manually in Supabase Auth. The app does not
 provide an in-app registration flow.
 
+On first login the app calls the `inicializar_dados` RPC, which creates the
+settings row and seeds the default stock items (Porcos/leitões, Milho, Ração)
+for that user. It is idempotent and safe to run on every login.
+
+## Deployment (Vercel or Netlify)
+
+The app is a static SPA built with Vite plus an installable PWA service worker.
+
+- Build command: `npm run build`
+- Output directory: `dist`
+- Environment variables (set in the hosting provider):
+  - `VITE_SUPABASE_URL`
+  - `VITE_SUPABASE_ANON_KEY`
+- SPA routing: add a catch-all rewrite to `/index.html` so deep links work.
+  - Netlify: add `public/_redirects` with `/*  /index.html  200`, or
+  - Vercel: add a rewrite of `/(.*)` to `/index.html` in `vercel.json`.
+
+After deploying, validate PWA installability on a mobile browser and record the
+final URL here (task T103).
+
+### PWA
+
+- Manifest: `public/manifest.webmanifest` (name, theme color `#ec4899`, icons).
+- Icons: `public/icons/` (`icon.svg`, `icon-192.png`, `icon-512.png`,
+  `icon-180.png` for Apple touch).
+- Service worker: configured via `vite-plugin-pwa` in `vite.config.ts`
+  (`registerType: autoUpdate`, SPA `navigateFallback`).
+
 ## CI
 
 The GitHub workflow performs repository hygiene checks only. It does not run

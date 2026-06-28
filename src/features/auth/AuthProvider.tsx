@@ -3,12 +3,14 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import {
   getCurrentSession,
   onAuthChange,
+  ensureUserData,
   signIn as signInAction,
   signOut as signOutAction,
   type Session,
@@ -30,6 +32,17 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const seededFor = useRef<string | null>(null);
+
+  // Seed per-user baseline data (settings + default stock items) once per
+  // authenticated user. Idempotent on the server; the ref avoids repeat calls.
+  useEffect(() => {
+    const userId = session?.user.id ?? null;
+    if (userId && seededFor.current !== userId) {
+      seededFor.current = userId;
+      void ensureUserData();
+    }
+  }, [session]);
 
   useEffect(() => {
     let active = true;

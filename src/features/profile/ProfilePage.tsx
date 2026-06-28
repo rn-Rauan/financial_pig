@@ -1,15 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/features/auth/AuthProvider";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 
+/** Minimal type for the (non-standard) beforeinstallprompt event. */
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+}
+
+function isStandalone(): boolean {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    // iOS Safari
+    (window.navigator as unknown as { standalone?: boolean }).standalone === true
+  );
+}
+
 /**
- * Profile screen: shows the signed-in user and provides the logout entry point.
- * Install-prompt UI is added in the PWA story (US8).
+ * Profile screen: signed-in user, PWA install/status, and logout.
  */
 export function ProfilePage() {
   const { user, signOut } = useAuth();
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
+
+  const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(
+    null,
+  );
+  const [installed, setInstalled] = useState(isStandalone());
+
+  useEffect(() => {
+    function onBeforeInstall(e: Event) {
+      e.preventDefault();
+      setInstallPrompt(e as BeforeInstallPromptEvent);
+    }
+    function onInstalled() {
+      setInstalled(true);
+      setInstallPrompt(null);
+    }
+    window.addEventListener("beforeinstallprompt", onBeforeInstall);
+    window.addEventListener("appinstalled", onInstalled);
+    return () => {
+      window.removeEventListener("beforeinstallprompt", onBeforeInstall);
+      window.removeEventListener("appinstalled", onInstalled);
+    };
+  }, []);
+
+  async function handleInstall() {
+    if (!installPrompt) return;
+    await installPrompt.prompt();
+    await installPrompt.userChoice;
+    // Whether accepted or dismissed, the prompt can only be used once.
+    setInstallPrompt(null);
+  }
 
   async function handleSignOut() {
     setSigningOut(true);
@@ -28,6 +71,33 @@ export function ProfilePage() {
         <p className="mt-1 break-all text-base font-medium text-gray-900">
           {user?.email ?? "—"}
         </p>
+      </div>
+
+      {/* PWA install / status */}
+      <div className="rounded-2xl bg-white p-4 shadow-sm">
+        <p className="text-xs uppercase tracking-wide text-gray-400">Aplicativo</p>
+        {installed ? (
+          <p className="mt-1 text-sm text-emerald-600">
+            ✓ Instalado — rodando como aplicativo.
+          </p>
+        ) : installPrompt ? (
+          <>
+            <p className="mt-1 text-sm text-gray-600">
+              Instale o Financial Pig na tela inicial para abrir como app.
+            </p>
+            <button
+              type="button"
+              onClick={() => void handleInstall()}
+              className="mt-3 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white active:bg-brand-dark"
+            >
+              Instalar app
+            </button>
+          </>
+        ) : (
+          <p className="mt-1 text-sm text-gray-500">
+            Para instalar, use o menu do navegador (“Adicionar à tela inicial”).
+          </p>
+        )}
       </div>
 
       <button

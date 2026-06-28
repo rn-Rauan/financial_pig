@@ -214,12 +214,12 @@ dataset and inactive-record rules.
 
 **Manual Validation**: Validate deployed app on Android/mobile browser.
 
-- [ ] T089 [P] [US8] Finalize PWA manifest values in `public/manifest.webmanifest`
-- [ ] T090 [P] [US8] Add Financial Pig icons and splash-ready assets in `public/icons/`
-- [ ] T091 [US8] Configure service worker/PWA plugin in `vite.config.ts`
-- [ ] T092 [US8] Add install prompt/status UI in `src/features/profile/ProfilePage.tsx`
-- [ ] T093 [US8] Review mobile layout, touch targets, and text fit across `src/features/`
-- [ ] T094 [US8] Configure deployment environment instructions in `README.md`
+- [x] T089 [P] [US8] Finalize PWA manifest values in `public/manifest.webmanifest`
+- [x] T090 [P] [US8] Add Financial Pig icons and splash-ready assets in `public/icons/`
+- [x] T091 [US8] Configure service worker/PWA plugin in `vite.config.ts`
+- [x] T092 [US8] Add install prompt/status UI in `src/features/profile/ProfilePage.tsx`
+- [x] T093 [US8] Review mobile layout, touch targets, and text fit across `src/features/`
+- [x] T094 [US8] Configure deployment environment instructions in `README.md`
 - [ ] T095 [US8] Manually validate PWA installability and deployed mobile behavior in `docs/manual-validation.md`
 
 **Checkpoint**: Deployed PWA works on mobile and is ready for delivery.
