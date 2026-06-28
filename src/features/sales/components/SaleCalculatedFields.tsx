@@ -6,17 +6,18 @@ import {
 } from "@/lib/calculations/financial";
 import { StatusBadge } from "@/features/sales/components/StatusBadge";
 import type { SaleType } from "@/features/sales/salesService";
+import { parseDecimalInput } from "@/features/sales/saleValidation";
 
 interface SaleCalculatedFieldsProps {
   tipoVenda: SaleType;
-  quantidade: number | "";
-  precoUnitario: number | "";
-  valorPago: number | "";
-  animaisUtilizados: number | "";
+  quantidade: string;
+  precoUnitario: string;
+  valorPago: string;
+  animaisUtilizados: string;
 }
 
-function n(value: number | ""): number {
-  return value === "" ? 0 : value;
+function n(value: string): number {
+  return parseDecimalInput(value) ?? 0;
 }
 
 /**

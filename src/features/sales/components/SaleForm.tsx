@@ -16,6 +16,7 @@ import {
 import {
   validateSale,
   isSaleValid,
+  parseDecimalInput,
   type SaleFormValues,
   type SaleFormErrors,
 } from "@/features/sales/saleValidation";
@@ -45,12 +46,6 @@ const INITIAL: SaleFormValues = {
   animaisUtilizados: "",
   observacao: "",
 };
-
-function parseNumber(raw: string): number | "" {
-  if (raw === "") return "";
-  const n = Number(raw.replace(",", "."));
-  return Number.isFinite(n) ? n : "";
-}
 
 export function SaleForm({
   customers,
@@ -94,17 +89,15 @@ export function SaleForm({
     onSubmit({
       tipoVenda: values.tipoVenda,
       produto: values.produto.trim(),
-      quantidade: values.quantidade === "" ? 0 : values.quantidade,
+      quantidade: parseDecimalInput(values.quantidade) ?? 0,
       unidade: values.unidade,
-      precoUnitario: values.precoUnitario === "" ? 0 : values.precoUnitario,
-      valorPago: values.valorPago === "" ? 0 : values.valorPago,
+      precoUnitario: parseDecimalInput(values.precoUnitario) ?? 0,
+      valorPago: parseDecimalInput(values.valorPago) ?? 0,
       dataVenda: values.dataVenda,
       clienteId: values.clienteId,
       nomeCliente: values.clienteId ? null : values.nomeCliente.trim() || null,
       animaisUtilizados: isPork
-        ? values.animaisUtilizados === ""
-          ? null
-          : values.animaisUtilizados
+        ? parseDecimalInput(values.animaisUtilizados)
         : null,
       observacao: values.observacao.trim() || null,
     });
@@ -150,7 +143,7 @@ export function SaleForm({
             type="text"
             inputMode="decimal"
             value={values.quantidade}
-            onChange={(e) => update("quantidade", parseNumber(e.target.value))}
+            onChange={(e) => update("quantidade", e.target.value)}
             className={inputClass}
           />
           {showError("quantidade")}
@@ -179,7 +172,7 @@ export function SaleForm({
             step="1"
             min="0"
             value={values.animaisUtilizados}
-            onChange={(e) => update("animaisUtilizados", parseNumber(e.target.value))}
+            onChange={(e) => update("animaisUtilizados", e.target.value)}
             className={inputClass}
           />
           <p className="text-xs text-gray-400">
@@ -196,7 +189,7 @@ export function SaleForm({
             type="text"
             inputMode="decimal"
             value={values.precoUnitario}
-            onChange={(e) => update("precoUnitario", parseNumber(e.target.value))}
+            onChange={(e) => update("precoUnitario", e.target.value)}
             className={inputClass}
           />
           {showError("precoUnitario")}
@@ -206,7 +199,7 @@ export function SaleForm({
             type="text"
             inputMode="decimal"
             value={values.valorPago}
-            onChange={(e) => update("valorPago", parseNumber(e.target.value))}
+            onChange={(e) => update("valorPago", e.target.value)}
             className={inputClass}
           />
           {showError("valorPago")}

@@ -9,26 +9,29 @@ import {
 import { calcSaleTotal, roundMoney } from "@/lib/calculations/financial";
 import type { SaleType, StockUnit } from "@/features/sales/salesService";
 
-/** Form values (numbers may be empty strings while typing). */
+/** Form values keep numeric inputs as text so users can type decimal separators. */
 export interface SaleFormValues {
   tipoVenda: SaleType;
   produto: string;
-  quantidade: number | "";
+  quantidade: string;
   unidade: StockUnit;
-  precoUnitario: number | "";
-  valorPago: number | "";
+  precoUnitario: string;
+  valorPago: string;
   dataVenda: string;
   clienteId: string | null;
   nomeCliente: string;
-  animaisUtilizados: number | "";
+  animaisUtilizados: string;
   observacao: string;
 }
 
 /** Per-field error map; empty object means valid. */
 export type SaleFormErrors = Partial<Record<keyof SaleFormValues, string>>;
 
-function toNumber(value: number | ""): number | null {
-  return value === "" ? null : value;
+export function parseDecimalInput(value: string): number | null {
+  const normalized = value.trim().replace(",", ".");
+  if (normalized === "" || normalized === "." || normalized === "-") return null;
+  const n = Number(normalized);
+  return Number.isFinite(n) ? n : null;
 }
 
 /**
@@ -41,15 +44,15 @@ export function validateSale(values: SaleFormValues): SaleFormErrors {
   const produtoError = validateRequired(values.produto, "Produto");
   if (produtoError) errors.produto = produtoError;
 
-  const quantidade = toNumber(values.quantidade);
+  const quantidade = parseDecimalInput(values.quantidade);
   const qtdError = validatePositiveQuantity(quantidade, "Quantidade");
   if (qtdError) errors.quantidade = qtdError;
 
-  const preco = toNumber(values.precoUnitario);
+  const preco = parseDecimalInput(values.precoUnitario);
   const precoError = validatePositiveMoney(preco, "Preço unitário");
   if (precoError) errors.precoUnitario = precoError;
 
-  const pago = toNumber(values.valorPago);
+  const pago = parseDecimalInput(values.valorPago);
   const pagoError = validateNonNegativeMoney(pago, "Valor pago");
   if (pagoError) errors.valorPago = pagoError;
 
@@ -66,7 +69,7 @@ export function validateSale(values: SaleFormValues): SaleFormErrors {
 
   // Pork/meat requires a positive integer number of animals.
   if (values.tipoVenda === "porco_carne") {
-    const animais = toNumber(values.animaisUtilizados);
+    const animais = parseDecimalInput(values.animaisUtilizados);
     const animaisError = validatePositiveInteger(animais, "Animais utilizados");
     if (animaisError) errors.animaisUtilizados = animaisError;
   }
