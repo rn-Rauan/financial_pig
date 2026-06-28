@@ -36,6 +36,10 @@ validation:
      ajuste by absolute quantity, with non-negative stock protection.
   8. `008_registrar_consumo.sql` — real `registrar_consumo` RPC: corn/feed-only
      consumption exit with insufficient-stock rejection.
+  9. `009_registrar_despesa_animal.sql` — real `registrar_despesa_animal` RPC:
+     atomic animal-expense record + history.
+  10. `010_registrar_gasto_fixo.sql` — real `registrar_gasto_fixo` RPC: atomic
+      fixed/construction-cost record + history.
 - Preferred migration command after `supabase login` and `supabase link`:
   `supabase db push --dry-run`, then `supabase db push`.
 - **RLS is enabled** on all business tables; each policy scopes rows to
@@ -47,8 +51,9 @@ validation:
   viewport. Do not add or run automated test commands.
 
 > Note: `registrar_venda` (004), `registrar_pagamento_venda` (005),
-> `registrar_compra` (006), `registrar_movimentacao_estoque` (007), and
-> `registrar_consumo` (008) are now implemented. Only `inativar_registro` (in
+> `registrar_compra` (006), `registrar_movimentacao_estoque` (007),
+> `registrar_consumo` (008), `registrar_despesa_animal` (009), and
+> `registrar_gasto_fixo` (010) are now implemented. Only `inativar_registro` (in
 > `002_business_rpcs.sql`) is still a stub that raises "not yet implemented"
 > until its user-story phase (US7).
 
@@ -185,6 +190,24 @@ Open "Estoque" (tab) and use the actions (Nova compra, Movimentar, Consumo).
 > Note: only `inativar_registro` (soft delete with compensation, US7) remains a
 > stub. Sales, payments, purchases, stock movements, and consumption are all
 > functional now.
+
+### US6 - Register Costs and Separate Construction (T078) — pending
+
+Reach the screens via the dashboard shortcuts (Despesa / Gasto fixo).
+
+1. Animal expense: register Remédio R$ 50,00 → appears in "Despesas dos animais"
+   list, cash balance decreases by R$ 50,00, and the dashboard "Despesas animais"
+   card increases by R$ 50,00 for the month.
+2. Fixed/construction cost: register Construção (material) R$ 120,00 → appears in
+   "Gastos fixos / construção" list, cash decreases by R$ 120,00, and the
+   dashboard "Gastos fixos" card increases by R$ 120,00.
+3. Separation: animal expenses and fixed costs are shown in distinct lists and
+   distinct dashboard cards; `lucro_operacional` excludes the fixed/construction
+   cost (it only drops by the animal expense), while `lucro_liquido` drops by
+   both — so construction does not distort the operational result.
+4. Validation: empty description, non-positive value, missing category, or
+   invalid date are rejected with clear messages (client blocks; RPC re-validates).
+5. History records `despesa_registrada` and `gasto_fixo_registrado`.
 
 ## Final Delivery Gate
 

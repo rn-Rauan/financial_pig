@@ -3,6 +3,7 @@ import { LoadingState } from "@/components/LoadingState";
 import { EmptyState } from "@/components/EmptyState";
 import { ErrorState } from "@/components/ErrorState";
 import { MonthSelector } from "@/features/dashboard/components/MonthSelector";
+import { DashboardShortcuts } from "@/features/dashboard/components/DashboardShortcuts";
 import { CashCards } from "@/features/dashboard/components/CashCards";
 import { RevenueCards } from "@/features/dashboard/components/RevenueCards";
 import { ResultCards } from "@/features/dashboard/components/ResultCards";
@@ -45,6 +46,8 @@ export function DashboardPage() {
         <h1 className="text-xl font-semibold text-gray-900">Início</h1>
         <p className="text-sm text-gray-500">Resumo do negócio no mês</p>
       </div>
+
+      <DashboardShortcuts />
 
       <MonthSelector
         year={year}

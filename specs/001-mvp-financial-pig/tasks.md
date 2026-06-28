@@ -173,12 +173,12 @@ reflected in financial indicators.
 **Manual Validation**: Register both cost types and verify balance, dashboard, and
 monthly summary separation.
 
-- [ ] T072 [P] [US6] Implement animal expenses page in `src/features/expenses/AnimalExpensesPage.tsx`
-- [ ] T073 [P] [US6] Implement fixed costs page in `src/features/expenses/FixedCostsPage.tsx`
-- [ ] T074 [US6] Implement animal expense service in `src/features/expenses/animalExpensesService.ts`
-- [ ] T075 [US6] Implement fixed cost service in `src/features/expenses/fixedCostsService.ts`
-- [ ] T076 [US6] Implement expense/fixed-cost validation in `src/features/expenses/expenseValidation.ts`
-- [ ] T077 [US6] Wire expense routes and dashboard shortcuts in `src/routes/AppRoutes.tsx`
+- [x] T072 [P] [US6] Implement animal expenses page in `src/features/expenses/AnimalExpensesPage.tsx`
+- [x] T073 [P] [US6] Implement fixed costs page in `src/features/expenses/FixedCostsPage.tsx`
+- [x] T074 [US6] Implement animal expense service in `src/features/expenses/animalExpensesService.ts`
+- [x] T075 [US6] Implement fixed cost service in `src/features/expenses/fixedCostsService.ts`
+- [x] T076 [US6] Implement expense/fixed-cost validation in `src/features/expenses/expenseValidation.ts`
+- [x] T077 [US6] Wire expense routes and dashboard shortcuts in `src/routes/AppRoutes.tsx`
 - [ ] T078 [US6] Manually validate animal expense and fixed/construction cost separation in `docs/manual-validation.md`
 
 **Checkpoint**: Operating costs and structural costs are separated.
