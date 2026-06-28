@@ -27,6 +27,11 @@ playwright-report/
 *.tsbuildinfo
 .eslintcache
 
+# Defensive: TS should never emit config JS/d.ts to the repo root (noEmit is set
+# in tsconfig.app.json/tsconfig.node.json). Ignore them in case of misconfig.
+/vite.config.js
+/vite.config.d.ts
+
 # Deployment caches
 .vercel/
 .netlify/

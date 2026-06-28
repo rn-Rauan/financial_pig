@@ -43,6 +43,20 @@ This project does not use automated tests. Quality is controlled through:
 - Manual validation: `docs/manual-validation.md`
 - Feature specs and plans: `specs/[feature]/`
 
+### Spec-Driven Development (MVP feature)
+
+The active MVP feature follows the Spec Kit documents under
+`specs/001-mvp-financial-pig/`:
+
+- Specification: [specs/001-mvp-financial-pig/spec.md](specs/001-mvp-financial-pig/spec.md)
+- Plan: [specs/001-mvp-financial-pig/plan.md](specs/001-mvp-financial-pig/plan.md)
+- Research: [specs/001-mvp-financial-pig/research.md](specs/001-mvp-financial-pig/research.md)
+- Schema: [specs/001-mvp-financial-pig/schema.md](specs/001-mvp-financial-pig/schema.md)
+- Data model: [specs/001-mvp-financial-pig/data-model.md](specs/001-mvp-financial-pig/data-model.md)
+- UI flow contracts: [specs/001-mvp-financial-pig/contracts/ui-flows.md](specs/001-mvp-financial-pig/contracts/ui-flows.md)
+- Quickstart (manual validation): [specs/001-mvp-financial-pig/quickstart.md](specs/001-mvp-financial-pig/quickstart.md)
+- Tasks: [specs/001-mvp-financial-pig/tasks.md](specs/001-mvp-financial-pig/tasks.md)
+
 When a feature is created, keep its `spec.md`, `plan.md`, `schema.md`,
 `quickstart.md`, and `tasks.md` aligned with the constitution.
 

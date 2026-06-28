@@ -16,16 +16,16 @@ implementation and validation.
 
 **Purpose**: Initialize the app and baseline project structure.
 
-- [ ] T001 Create React/Vite/TypeScript app files in `package.json`, `index.html`, `src/main.tsx`, and `src/app/App.tsx`
-- [ ] T002 Configure Tailwind CSS in `tailwind.config.ts`, `postcss.config.js`, and `src/styles/globals.css`
-- [ ] T003 [P] Configure TypeScript settings in `tsconfig.json` and `tsconfig.node.json`
-- [ ] T004 [P] Configure Vite and path aliases in `vite.config.ts`
-- [ ] T005 [P] Add Supabase environment placeholders to `.env.example`
-- [ ] T006 [P] Create feature folder structure under `src/features/`
-- [ ] T007 [P] Create shared folders under `src/components/`, `src/lib/`, `src/pages/`, and `src/routes/`
-- [ ] T008 [P] Configure PWA manifest and base icons in `public/manifest.webmanifest` and `public/icons/`
-- [ ] T009 Add app shell layout in `src/app/AppShell.tsx`
-- [ ] T010 Add README SDD links for `specs/001-mvp-financial-pig/` in `README.md`
+- [x] T001 Create React/Vite/TypeScript app files in `package.json`, `index.html`, `src/main.tsx`, and `src/app/App.tsx`
+- [x] T002 Configure Tailwind CSS in `tailwind.config.ts`, `postcss.config.js`, and `src/styles/globals.css`
+- [x] T003 [P] Configure TypeScript settings in `tsconfig.json` and `tsconfig.node.json`
+- [x] T004 [P] Configure Vite and path aliases in `vite.config.ts`
+- [x] T005 [P] Add Supabase environment placeholders to `.env.example`
+- [x] T006 [P] Create feature folder structure under `src/features/`
+- [x] T007 [P] Create shared folders under `src/components/`, `src/lib/`, `src/pages/`, and `src/routes/`
+- [x] T008 [P] Configure PWA manifest and base icons in `public/manifest.webmanifest` and `public/icons/`
+- [x] T009 Add app shell layout in `src/app/AppShell.tsx`
+- [x] T010 Add README SDD links for `specs/001-mvp-financial-pig/` in `README.md`
 
 ---
 
@@ -36,21 +36,21 @@ before user stories.
 
 **Critical**: No user story work starts until this phase is complete.
 
-- [ ] T011 Create initial Supabase migration from `schema.md` in `supabase/migrations/001_initial_schema.sql`
-- [ ] T012 Add enums/check constraints for sale, purchase, stock, expense, fixed cost, and history values in `supabase/migrations/001_initial_schema.sql`
-- [ ] T013 Add `updated_at` trigger helper in `supabase/migrations/001_initial_schema.sql`
-- [ ] T014 Add RLS policies for all business tables in `supabase/migrations/001_initial_schema.sql`
-- [ ] T015 Add stock non-negative database protection in `supabase/migrations/001_initial_schema.sql`
-- [ ] T016 Add RPC stubs for `registrar_venda`, `registrar_pagamento_venda`, `registrar_compra`, `registrar_movimentacao_estoque`, `registrar_consumo`, and `inativar_registro` in `supabase/migrations/002_business_rpcs.sql`
-- [ ] T017 Create Supabase client in `src/lib/supabase/client.ts`
-- [ ] T018 Create typed environment validation in `src/lib/config/env.ts`
-- [ ] T019 Create shared route guard utilities in `src/routes/guards.tsx`
-- [ ] T020 Create shared currency, number, and date formatting helpers in `src/lib/format/`
-- [ ] T021 Create financial calculation helpers in `src/lib/calculations/financial.ts`
-- [ ] T022 Create stock calculation helpers in `src/lib/calculations/stock.ts`
-- [ ] T023 Create validation helpers for positive money, quantities, dates, and required fields in `src/lib/validation/`
-- [ ] T024 Create shared loading, empty, error, and confirmation components in `src/components/`
-- [ ] T025 Document local Supabase setup assumptions in `docs/manual-validation.md`
+- [x] T011 Create initial Supabase migration from `schema.md` in `supabase/migrations/001_initial_schema.sql`
+- [x] T012 Add enums/check constraints for sale, purchase, stock, expense, fixed cost, and history values in `supabase/migrations/001_initial_schema.sql`
+- [x] T013 Add `updated_at` trigger helper in `supabase/migrations/001_initial_schema.sql`
+- [x] T014 Add RLS policies for all business tables in `supabase/migrations/001_initial_schema.sql`
+- [x] T015 Add stock non-negative database protection in `supabase/migrations/001_initial_schema.sql`
+- [x] T016 Add RPC stubs for `registrar_venda`, `registrar_pagamento_venda`, `registrar_compra`, `registrar_movimentacao_estoque`, `registrar_consumo`, and `inativar_registro` in `supabase/migrations/002_business_rpcs.sql`
+- [x] T017 Create Supabase client in `src/lib/supabase/client.ts`
+- [x] T018 Create typed environment validation in `src/lib/config/env.ts`
+- [x] T019 Create shared route guard utilities in `src/routes/guards.tsx`
+- [x] T020 Create shared currency, number, and date formatting helpers in `src/lib/format/`
+- [x] T021 Create financial calculation helpers in `src/lib/calculations/financial.ts`
+- [x] T022 Create stock calculation helpers in `src/lib/calculations/stock.ts`
+- [x] T023 Create validation helpers for positive money, quantities, dates, and required fields in `src/lib/validation/`
+- [x] T024 Create shared loading, empty, error, and confirmation components in `src/components/`
+- [x] T025 Document local Supabase setup assumptions in `docs/manual-validation.md`
 
 **Checkpoint**: Database structure, RLS, shared helpers, and app skeleton are ready.
 
