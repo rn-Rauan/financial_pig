@@ -12,6 +12,11 @@ import { SaleFormPage } from "@/features/sales/SaleFormPage";
 import { SaleDetailPage } from "@/features/sales/SaleDetailPage";
 import { ReceivablesPage } from "@/features/receivables/ReceivablesPage";
 import { PaymentUpdatePage } from "@/features/receivables/PaymentUpdatePage";
+import { PurchasesListPage } from "@/features/purchases/PurchasesListPage";
+import { PurchaseFormPage } from "@/features/purchases/PurchaseFormPage";
+import { StockPage } from "@/features/stock/StockPage";
+import { StockMovementPage } from "@/features/stock/StockMovementPage";
+import { ConsumptionPage } from "@/features/stock/ConsumptionPage";
 
 const sessionFallback = (
   <div className="flex min-h-screen items-center justify-center">
@@ -71,6 +76,11 @@ export function AppRoutes() {
         <Route path="vendas/:id" element={<SaleDetailPage />} />
         <Route path="recebiveis" element={<ReceivablesPage />} />
         <Route path="recebiveis/:id/pagar" element={<PaymentUpdatePage />} />
+        <Route path="compras" element={<PurchasesListPage />} />
+        <Route path="compras/nova" element={<PurchaseFormPage />} />
+        <Route path="estoque" element={<StockPage />} />
+        <Route path="estoque/movimentar" element={<StockMovementPage />} />
+        <Route path="estoque/consumo" element={<ConsumptionPage />} />
         <Route path="perfil" element={<ProfilePage />} />
       </Route>
 

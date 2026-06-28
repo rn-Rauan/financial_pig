@@ -149,16 +149,16 @@ and non-negative.
 **Manual Validation**: Use quickstart stock operations and invalid negative-stock
 attempts.
 
-- [ ] T061 [P] [US5] Implement purchases list page in `src/features/purchases/PurchasesListPage.tsx`
-- [ ] T062 [P] [US5] Implement purchase form page in `src/features/purchases/PurchaseFormPage.tsx`
-- [ ] T063 [US5] Implement purchase mutation wrapper for `registrar_compra` in `src/features/purchases/purchasesService.ts`
-- [ ] T064 [P] [US5] Implement stock page in `src/features/stock/StockPage.tsx`
-- [ ] T065 [P] [US5] Implement stock movement form in `src/features/stock/StockMovementPage.tsx`
-- [ ] T066 [US5] Implement stock query and movement wrappers in `src/features/stock/stockService.ts`
-- [ ] T067 [US5] Implement consumption page in `src/features/stock/ConsumptionPage.tsx`
-- [ ] T068 [US5] Implement consumption mutation wrapper for `registrar_consumo` in `src/features/stock/consumptionService.ts`
-- [ ] T069 [US5] Implement stock and consumption validation messages in `src/features/stock/stockValidation.ts`
-- [ ] T070 [US5] Wire purchase, stock, movement, and consumption routes in `src/routes/AppRoutes.tsx`
+- [x] T061 [P] [US5] Implement purchases list page in `src/features/purchases/PurchasesListPage.tsx`
+- [x] T062 [P] [US5] Implement purchase form page in `src/features/purchases/PurchaseFormPage.tsx`
+- [x] T063 [US5] Implement purchase mutation wrapper for `registrar_compra` in `src/features/purchases/purchasesService.ts`
+- [x] T064 [P] [US5] Implement stock page in `src/features/stock/StockPage.tsx`
+- [x] T065 [P] [US5] Implement stock movement form in `src/features/stock/StockMovementPage.tsx`
+- [x] T066 [US5] Implement stock query and movement wrappers in `src/features/stock/stockService.ts`
+- [x] T067 [US5] Implement consumption page in `src/features/stock/ConsumptionPage.tsx`
+- [x] T068 [US5] Implement consumption mutation wrapper for `registrar_consumo` in `src/features/stock/consumptionService.ts`
+- [x] T069 [US5] Implement stock and consumption validation messages in `src/features/stock/stockValidation.ts`
+- [x] T070 [US5] Wire purchase, stock, movement, and consumption routes in `src/routes/AppRoutes.tsx`
 - [ ] T071 [US5] Manually validate purchases, stock entries/exits/losses/adjustments, consumption, and negative-stock blocking in `docs/manual-validation.md`
 
 **Checkpoint**: Stock remains correct and never negative.

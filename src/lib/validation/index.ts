@@ -6,6 +6,18 @@
 
 export type ValidationResult = string | null;
 
+/**
+ * Parse a text input into a number, accepting a comma or dot decimal separator.
+ * Returns null for empty/partial input so callers can treat it as "not yet a
+ * number". Keeping form inputs as text lets users type decimals naturally.
+ */
+export function parseDecimalInput(value: string): number | null {
+  const normalized = value.trim().replace(",", ".");
+  if (normalized === "" || normalized === "." || normalized === "-") return null;
+  const n = Number(normalized);
+  return Number.isFinite(n) ? n : null;
+}
+
 /** Required, non-empty trimmed text. */
 export function validateRequired(
   value: string | null | undefined,

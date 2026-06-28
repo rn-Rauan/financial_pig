@@ -29,6 +29,13 @@ validation:
   5. `005_registrar_pagamento_venda.sql` — real `registrar_pagamento_venda` RPC
      (replaces the stub): atomic later payment that updates the sale's
      paid/remaining/status and writes payment + history rows.
+  6. `006_registrar_compra.sql` — real `registrar_compra` RPC: atomic purchase
+     that increases pig/corn/feed stock and writes movement + history rows.
+  7. `007_registrar_movimentacao_estoque.sql` — real
+     `registrar_movimentacao_estoque` RPC: entrada/saida/perda by delta and
+     ajuste by absolute quantity, with non-negative stock protection.
+  8. `008_registrar_consumo.sql` — real `registrar_consumo` RPC: corn/feed-only
+     consumption exit with insufficient-stock rejection.
 - Preferred migration command after `supabase login` and `supabase link`:
   `supabase db push --dry-run`, then `supabase db push`.
 - **RLS is enabled** on all business tables; each policy scopes rows to
@@ -39,11 +46,11 @@ validation:
 - Local run: `npm install` then `npm run dev`, opened at a mobile-width
   viewport. Do not add or run automated test commands.
 
-> Note: `registrar_venda` (migration 004) and `registrar_pagamento_venda`
-> (migration 005) are now implemented. The remaining RPCs in
-> `002_business_rpcs.sql` (`registrar_compra`, `registrar_movimentacao_estoque`,
-> `registrar_consumo`, `inativar_registro`) are still stubs that raise
-> "not yet implemented" until their user-story phase.
+> Note: `registrar_venda` (004), `registrar_pagamento_venda` (005),
+> `registrar_compra` (006), `registrar_movimentacao_estoque` (007), and
+> `registrar_consumo` (008) are now implemented. Only `inativar_registro` (in
+> `002_business_rpcs.sql`) is still a stub that raises "not yet implemented"
+> until its user-story phase (US7).
 
 ## Required Validation
 
@@ -152,6 +159,32 @@ credit feed sale, restante R$ 90,00). Open "Vendas → Contas a receber".
    no customer) still appears and can be paid; the name is shown.
 7. History records each `pagamento_recebido`; the sale's later payments are
    reflected in `pagamentos_venda` without double-counting cash on the dashboard.
+
+### US5 - Control Purchases, Stock, and Consumption (T071) — pending
+
+Open "Estoque" (tab) and use the actions (Nova compra, Movimentar, Consumo).
+
+1. Purchase pigs: 3 cabeças @ R$ 150,00 → purchase saved, total R$ 450,00, pig
+   stock increases by 3, cash balance decreases by R$ 450,00, history shows
+   `compra_registrada`.
+2. Purchase feed: 5 sacas @ R$ 80,00 → feed stock increases by 5, cash decreases
+   by R$ 400,00.
+3. "Outros" purchase: saved with no stock effect; cash still decreases.
+4. Stock entrada/saida/perda: each changes the item quantity by the delta and
+   records a movement; saida/perda beyond available stock is rejected
+   ("Estoque insuficiente...") and the quantity is unchanged.
+5. Ajuste: set an item to a new absolute count (e.g. physical count) → stock
+   becomes that value; a no-op adjustment (same value) is rejected.
+6. Consumption: 1 saca of corn → corn stock drops by 1, recorded as `consumo`
+   (no cash effect); selecting/forcing a non-corn/feed item is rejected
+   ("Consumo permitido apenas para milho ou ração.").
+7. Negative-stock blocking: any operation that would drive stock below zero is
+   rejected and leaves the previous quantity intact.
+8. Dashboard stock cards and "Estoque atual" reflect the resulting quantities.
+
+> Note: only `inativar_registro` (soft delete with compensation, US7) remains a
+> stub. Sales, payments, purchases, stock movements, and consumption are all
+> functional now.
 
 ## Final Delivery Gate
 
