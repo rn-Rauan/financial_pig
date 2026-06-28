@@ -22,6 +22,10 @@ validation:
      `registrar_pagamento_venda`, `registrar_compra`,
      `registrar_movimentacao_estoque`, `registrar_consumo`, and
      `inativar_registro` (full logic lands in their user-story phases).
+  3. `003_dashboard_read_model.sql` - read-only `dashboard_mensal` RPC for
+     dashboard indicators.
+- Preferred migration command after `supabase login` and `supabase link`:
+  `supabase db push --dry-run`, then `supabase db push`.
 - **RLS is enabled** on all business tables; each policy scopes rows to
   `auth.uid()`. Verify with a second user (or by querying without a session)
   that no cross-user rows are visible.
@@ -69,6 +73,37 @@ For each user story, record:
 - Expected result.
 - Actual result.
 - Any issue found and whether it was fixed.
+
+## Pending Validation by User Story
+
+These scenarios are implemented and build-clean, but still require a live
+Supabase project + the manually-created user to be validated (tasks T031, T041).
+Record results here when executed.
+
+### US1 - Secure Mobile Access (T031) — pending
+
+1. Valid credentials open the dashboard (`/`).
+2. Invalid credentials show "E-mail ou senha inválidos." without internal detail.
+3. Opening any protected route while logged out redirects to `/login`.
+4. There is no in-app registration screen/link.
+5. Logout from Perfil returns to `/login` and protected routes are blocked again.
+
+### US2 - Understand Business Status (T041) — pending
+
+1. With the quickstart dataset loaded, dashboard totals match hand calculation:
+   cash balance, receivables (separate from cash), revenue by type, purchases,
+   expenses, fixed costs, gross/operational/net profit, stock, and pig
+   indicators.
+2. Month selector changes the selected month and monthly figures update; cash,
+   receivables, and stock reflect current cumulative state.
+3. A month with no movement and zero balances shows the empty state.
+4. Pig averages show "—" (not an error) when there are no animals/kg.
+5. Data-load failure shows the retryable error state.
+
+> Note: full end-to-end totals depend on the sales/payments/purchases write RPCs
+> (US3–US5), which are still stubs. The dashboard read model
+> (`dashboard_mensal`) and UI are ready to validate against data inserted
+> directly in Supabase.
 
 ## Final Delivery Gate
 

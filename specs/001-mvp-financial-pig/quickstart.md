@@ -10,9 +10,29 @@ validation path for the MVP before final delivery.
 - Environment variables configured locally and in deployment:
   - `VITE_SUPABASE_URL`
   - `VITE_SUPABASE_ANON_KEY`
+- Supabase CLI installed and linked to the remote project, or access to the
+  Supabase SQL Editor.
 - Database migrations applied from `supabase/migrations/`.
 - RLS enabled on all business tables.
 - App deployed to Vercel or Netlify for final validation.
+
+## Supabase Database Setup
+
+Use Supabase CLI for the Prisma-like migration flow:
+
+```bash
+supabase login
+supabase link --project-ref YOUR_PROJECT_REF
+supabase db push --dry-run
+supabase db push
+```
+
+This applies the SQL files under `supabase/migrations/` to the linked remote
+Supabase database. The application environment variables still need to be set
+separately in `.env.local` and in the deployment provider.
+
+If Supabase CLI is not available, run the migration files manually in the
+Supabase SQL Editor in filename order.
 
 ## Local Run
 

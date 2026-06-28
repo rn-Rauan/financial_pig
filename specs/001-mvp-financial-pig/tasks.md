@@ -63,11 +63,11 @@ before user stories.
 **Manual Validation**: Validate login success, login failure, protected route
 blocking, and no in-app registration.
 
-- [ ] T026 [P] [US1] Implement login page UI in `src/features/auth/LoginPage.tsx`
-- [ ] T027 [P] [US1] Implement auth state provider in `src/features/auth/AuthProvider.tsx`
-- [ ] T028 [US1] Implement sign-in and sign-out actions in `src/features/auth/authService.ts`
-- [ ] T029 [US1] Wire protected routes in `src/routes/AppRoutes.tsx`
-- [ ] T030 [US1] Add profile/logout entry point in `src/features/profile/ProfilePage.tsx`
+- [x] T026 [P] [US1] Implement login page UI in `src/features/auth/LoginPage.tsx`
+- [x] T027 [P] [US1] Implement auth state provider in `src/features/auth/AuthProvider.tsx`
+- [x] T028 [US1] Implement sign-in and sign-out actions in `src/features/auth/authService.ts`
+- [x] T029 [US1] Wire protected routes in `src/routes/AppRoutes.tsx`
+- [x] T030 [US1] Add profile/logout entry point in `src/features/profile/ProfilePage.tsx`
 - [ ] T031 [US1] Manually validate auth scenarios and record findings in `docs/manual-validation.md`
 
 **Checkpoint**: Authenticated access is functional and protected.
@@ -82,15 +82,15 @@ pig indicators for the selected month.
 **Manual Validation**: Use the quickstart dataset and compare dashboard totals to
 manual calculations.
 
-- [ ] T032 [P] [US2] Implement dashboard data query/RPC wrapper in `src/features/dashboard/dashboardService.ts`
-- [ ] T033 [P] [US2] Implement dashboard page shell in `src/features/dashboard/DashboardPage.tsx`
-- [ ] T034 [US2] Implement cash and receivables cards in `src/features/dashboard/components/CashCards.tsx`
-- [ ] T035 [US2] Implement revenue cards in `src/features/dashboard/components/RevenueCards.tsx`
-- [ ] T036 [US2] Implement outgoing and profit cards in `src/features/dashboard/components/ResultCards.tsx`
-- [ ] T037 [US2] Implement stock summary cards in `src/features/dashboard/components/StockCards.tsx`
-- [ ] T038 [US2] Implement pig performance summary in `src/features/dashboard/components/PigSummary.tsx`
-- [ ] T039 [US2] Implement month selector in `src/features/dashboard/components/MonthSelector.tsx`
-- [ ] T040 [US2] Add dashboard loading, empty, and error states in `src/features/dashboard/DashboardPage.tsx`
+- [x] T032 [P] [US2] Implement dashboard data query/RPC wrapper in `src/features/dashboard/dashboardService.ts`
+- [x] T033 [P] [US2] Implement dashboard page shell in `src/features/dashboard/DashboardPage.tsx`
+- [x] T034 [US2] Implement cash and receivables cards in `src/features/dashboard/components/CashCards.tsx`
+- [x] T035 [US2] Implement revenue cards in `src/features/dashboard/components/RevenueCards.tsx`
+- [x] T036 [US2] Implement outgoing and profit cards in `src/features/dashboard/components/ResultCards.tsx`
+- [x] T037 [US2] Implement stock summary cards in `src/features/dashboard/components/StockCards.tsx`
+- [x] T038 [US2] Implement pig performance summary in `src/features/dashboard/components/PigSummary.tsx`
+- [x] T039 [US2] Implement month selector in `src/features/dashboard/components/MonthSelector.tsx`
+- [x] T040 [US2] Add dashboard loading, empty, and error states in `src/features/dashboard/DashboardPage.tsx`
 - [ ] T041 [US2] Manually validate dashboard calculations with the quickstart dataset in `docs/manual-validation.md`
 
 **Checkpoint**: Dashboard reflects the selected month and core business rules.

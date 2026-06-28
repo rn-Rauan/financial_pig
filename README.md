@@ -71,6 +71,32 @@ cp .env.example .env.local
 Fill the Supabase values locally or in the deployment provider. Do not commit
 real environment files.
 
+## Supabase Setup
+
+The app connection and the database schema are separate steps:
+
+- `.env.local` connects the React app to Supabase Auth/API.
+- Supabase CLI applies the SQL migrations in `supabase/migrations/` to the
+  remote database.
+
+Install and authenticate the Supabase CLI, then link this repository to the
+remote project:
+
+```bash
+supabase login
+supabase link --project-ref YOUR_PROJECT_REF
+```
+
+Apply pending migrations:
+
+```bash
+supabase db push --dry-run
+supabase db push
+```
+
+The single app user is created manually in Supabase Auth. The app does not
+provide an in-app registration flow.
+
 ## CI
 
 The GitHub workflow performs repository hygiene checks only. It does not run
