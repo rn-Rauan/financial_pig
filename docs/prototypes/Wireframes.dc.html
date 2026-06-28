@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="prototype-reference">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .wf-sans { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  .hand { font-family: 'Architects Daughter', cursive; }
+  .stripe { background-image: repeating-linear-gradient(45deg, #e9e9e9 0, #e9e9e9 6px, #f5f5f5 6px, #f5f5f5 12px); }
+</style>
+
+<div style="min-width:100%;min-height:100vh;box-sizing:border-box;padding:48px;background:#e7e5df;width:max-content">
+
+  <div style="font-family:'Architects Daughter',cursive;font-size:34px;color:#2a2a2a;margin-bottom:6px">Financial Pig · Wireframes lo-fi</div>
+  <div class="wf-sans" style="font-size:13px;color:#7a786f;margin-bottom:8px;max-width:720px">PWA mobile-first · suinocultura (porcos/carne, milho, ração). Backend Supabase (Auth + PostgreSQL), usuário único autenticado. Wireframes de baixa fidelidade para virar código.</div>
+  <div class="wf-sans" style="font-size:11px;color:#9a988f;margin-bottom:34px;max-width:720px">Módulos: Vendas · Fiados/Contas a receber · Clientes (opcional) · Compras · Estoque/Consumo · Despesas dos animais · Gastos fixos/construção · Relatórios (resumo mensal, análise de porcos) · Histórico.</div>
+
+  <!-- ============ 01 · ACESSO & VISÃO GERAL ============ -->
+  <div class="hand" style="font-size:18px;color:#5b5950;margin-bottom:14px;border-bottom:2px dashed #c3c1b6;padding-bottom:6px;width:max-content">01 · Acesso & Visão geral</div>
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:48px">
+
+    <!-- 1. LOGIN -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">1 · Login</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px">
+          <div class="stripe" style="width:72px;height:72px;border:1.5px solid #bbb;border-radius:18px;display:flex;align-items:center;justify-content:center"><span class="hand" style="font-size:11px;color:#999">logo</span></div>
+          <div class="hand" style="font-size:22px;color:#2a2a2a">Financial Pig</div>
+          <div class="wf-sans" style="font-size:10px;color:#aaa;margin-top:-10px">controle da criação de porcos</div>
+          <div style="width:100%;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:10px;color:#888">E-mail / login *</span><div class="wf-sans" style="height:38px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8cfae3efe9cce9e1ede5e0a2efe3e1">[email&#160;protected]</a></div></div>
+          <div style="width:100%;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:10px;color:#888">Senha *</span><div class="wf-sans" style="height:38px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">••••••••</div></div>
+          <div class="wf-sans" style="width:100%;font-size:9px;color:#c0392b;border:1px dotted #c0392b;border-radius:6px;padding:5px 8px;background:#fdf2f1">⚠ erro: "E-mail ou senha inválidos"</div>
+          <div class="hand" style="width:100%;height:42px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px">Entrar →</div>
+          <div class="wf-sans" style="font-size:9px;color:#aaa;text-align:center">Sessão mantida · cadastro feito no Supabase<br>(sem registro de usuário no app)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. DASHBOARD -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">2 · Dashboard / Início</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:14px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="hand" style="font-size:19px;color:#2a2a2a">Início</div>
+            <div style="display:flex;align-items:center;gap:6px"><div class="wf-sans" style="font-size:9px;color:#888;border:1px dashed #bbb;border-radius:12px;padding:2px 8px">junho 2026 ▾</div><div class="stripe" style="width:24px;height:24px;border-radius:50%;border:1px solid #ccc"></div></div>
+          </div>
+          <div style="border:1.5px solid #2a2a2a;border-radius:10px;padding:10px"><div style="display:flex;justify-content:space-between;align-items:center"><div class="wf-sans" style="font-size:9px;color:#666">Saldo atual (em caixa)</div><div class="hand" style="font-size:20px;color:#2a2a2a">R$ ____</div></div><div class="wf-sans" style="font-size:7.5px;color:#aaa;margin-top:2px">capital inicial + recebido − compras − despesas − gastos fixos · só valores pagos</div></div>
+          <div style="border:1.5px solid #c0392b;background:#fdf2f1;border-radius:10px;padding:9px;display:flex;justify-content:space-between;align-items:center"><div><div class="wf-sans" style="font-size:9px;color:#666">Contas a receber (fiados)</div><div class="wf-sans" style="font-size:7.5px;color:#aaa">não entra no saldo</div></div><div class="hand" style="font-size:18px;color:#c0392b">R$ ____</div></div>
+
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Receitas</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:8px;color:#999">Total</div><div class="hand" style="font-size:14px">R$ __</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:8px;color:#999">Porco/Carne</div><div class="hand" style="font-size:14px">R$ __</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:8px;color:#999">Milho</div><div class="hand" style="font-size:14px">R$ __</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:8px;color:#999">Ração</div><div class="hand" style="font-size:14px">R$ __</div></div>
+          </div>
+
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Saídas</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px">
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:7.5px;color:#999">Compras</div><div class="hand" style="font-size:13px">R$ __</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:7.5px;color:#999">Desp. animais</div><div class="hand" style="font-size:13px">R$ __</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:7.5px;color:#999">Gastos fixos</div><div class="hand" style="font-size:13px">R$ __</div></div>
+          </div>
+
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Resultado</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px">
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:7.5px;color:#999">Lucro bruto</div><div class="hand" style="font-size:13px">R$ __</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:7.5px;color:#999">Lucro líq.</div><div class="hand" style="font-size:13px">R$ __</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:7.5px;color:#999">Operac.*</div><div class="hand" style="font-size:13px">R$ __</div></div>
+          </div>
+          <div class="wf-sans" style="font-size:7.5px;color:#aaa">*operacional = sem gastos de construção</div>
+
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Estoque atual</div>
+          <div style="display:flex;gap:6px">
+            <div style="flex:1;border:1px dashed #bbb;border-radius:8px;padding:6px;text-align:center"><div class="wf-sans" style="font-size:8px;color:#999">Porcos</div><div class="hand" style="font-size:15px">__</div></div>
+            <div style="flex:1;border:1px dashed #bbb;border-radius:8px;padding:6px;text-align:center"><div class="wf-sans" style="font-size:8px;color:#999">Milho</div><div class="hand" style="font-size:15px">__ sc</div></div>
+            <div style="flex:1;border:1px dashed #bbb;border-radius:8px;padding:6px;text-align:center"><div class="wf-sans" style="font-size:8px;color:#999">Ração</div><div class="hand" style="font-size:15px">__ sc</div></div>
+          </div>
+          <div style="display:flex;gap:6px;margin-top:2px">
+            <div class="hand" style="flex:1;height:34px;background:#2a2a2a;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px">+ Venda</div>
+            <div class="hand" style="flex:1;height:34px;border:1.5px solid #2a2a2a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px">+ Compra</div>
+            <div class="hand" style="flex:1;height:34px;border:1.5px solid #2a2a2a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px">+ Despesa</div>
+          </div>
+        </div>
+        <div class="wf-sans" style="height:48px;border-top:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-around;font-size:8px;color:#999">
+          <div style="text-align:center;color:#2a2a2a"><div style="font-size:14px">▣</div>Início</div>
+          <div style="text-align:center"><div style="font-size:14px">≣</div>Vendas</div>
+          <div style="text-align:center"><div style="font-size:14px">▦</div>Estoque</div>
+          <div style="text-align:center"><div style="font-size:14px">▤</div>Relatórios</div>
+          <div style="text-align:center"><div style="font-size:14px">◉</div>Perfil</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ 02 · VENDAS & FIADOS ============ -->
+  <div class="hand" style="font-size:18px;color:#5b5950;margin-bottom:14px;border-bottom:2px dashed #c3c1b6;padding-bottom:6px;width:max-content">02 · Vendas & Fiados</div>
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:48px">
+
+    <!-- 3. VENDAS LISTA -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">3 · Vendas (lista)</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12);position:relative">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center"><div class="hand" style="font-size:20px;color:#2a2a2a">Vendas</div><div class="wf-sans" style="font-size:9px;color:#2a2a2a;border:1px solid #2a2a2a;border-radius:12px;padding:2px 9px">Clientes →</div></div>
+          <div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">🔍 Buscar por cliente / produto</div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <div class="hand" style="font-size:9px;border:1.5px solid #2a2a2a;border-radius:14px;padding:3px 9px">Todos</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;border-radius:14px;padding:3px 9px;color:#888">Pago</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;border-radius:14px;padding:3px 9px;color:#888">Parcial</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;border-radius:14px;padding:3px 9px;color:#888">Fiado</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;border-radius:14px;padding:3px 9px;color:#888">Tipo ▾</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="border:1px solid #ddd;border-radius:8px;padding:9px;display:flex;justify-content:space-between"><div><div class="hand" style="font-size:13px;color:#2a2a2a">Carne · 80 kg · 2 cab.</div><div class="wf-sans" style="font-size:9px;color:#999">João · 12/06</div></div><div style="text-align:right"><div class="hand" style="font-size:13px">R$ 960</div><div class="wf-sans" style="font-size:8px;color:#2e7d32;border:1px solid #2e7d32;border-radius:8px;padding:0 5px;margin-top:2px">Pago</div></div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:9px;display:flex;justify-content:space-between"><div><div class="hand" style="font-size:13px;color:#2a2a2a">Milho · 4 sacas</div><div class="wf-sans" style="font-size:9px;color:#999">Maria · 10/06</div></div><div style="text-align:right"><div class="hand" style="font-size:13px">R$ 320</div><div class="wf-sans" style="font-size:8px;color:#e67e22;border:1px solid #e67e22;border-radius:8px;padding:0 5px;margin-top:2px">Parcial</div></div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:9px;display:flex;justify-content:space-between"><div><div class="hand" style="font-size:13px;color:#2a2a2a">Ração · 2 sacas</div><div class="wf-sans" style="font-size:9px;color:#999">Cliente não informado · 08/06</div></div><div style="text-align:right"><div class="hand" style="font-size:13px">R$ 180</div><div class="wf-sans" style="font-size:8px;color:#c0392b;border:1px solid #c0392b;border-radius:8px;padding:0 5px;margin-top:2px">Fiado</div></div></div>
+          </div>
+        </div>
+        <div class="hand" style="position:absolute;right:16px;bottom:62px;width:48px;height:48px;background:#2a2a2a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 8px rgba(0,0,0,.3)">+</div>
+        <div class="wf-sans" style="height:48px;border-top:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-around;font-size:8px;color:#999"><div style="text-align:center"><div style="font-size:14px">▣</div>Início</div><div style="text-align:center;color:#2a2a2a"><div style="font-size:14px">≣</div>Vendas</div><div style="text-align:center"><div style="font-size:14px">▦</div>Estoque</div><div style="text-align:center"><div style="font-size:14px">▤</div>Relatórios</div><div style="text-align:center"><div style="font-size:14px">◉</div>Perfil</div></div>
+      </div>
+    </div>
+
+    <!-- 4. NOVA VENDA -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">4 · Nova venda</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:11px 13px;display:flex;flex-direction:column;gap:8px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:17px;color:#2a2a2a">Nova venda</span></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Tipo / produto *</span><div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:11px;color:#666">Porco/Carne ▾</div></div>
+          <div style="display:flex;gap:7px">
+            <div style="flex:1.4;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Quantidade *</span><div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">0</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Unidade</span><div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 8px;font-size:11px;color:#666">Kg ▾</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px;background:#fafaf6;border:1px dotted #caa;border-radius:8px;padding:7px"><span class="wf-sans" style="font-size:9px;color:#a55">↳ só Porco/Carne · Animais utilizados *</span><div class="wf-sans" style="height:28px;border:1px dashed #caa;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">0 (reduz estoque de porcos)</div><div class="wf-sans" style="font-size:7.5px;color:#999">auto: kg/cabeça e R$/cabeça aparecem ao salvar</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Cliente (opcional)</span><div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:10px;color:#bbb">Buscar cadastrado ou digitar nome <span style="color:#888">＋</span></div></div>
+          <div style="display:flex;gap:7px">
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Preço unit. *</span><div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">R$ 0</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Valor total</span><div class="wf-sans" style="height:32px;border:1px solid #2a2a2a;background:#f4f4f0;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#2a2a2a">= auto 🔒</div></div>
+          </div>
+          <div style="display:flex;gap:7px">
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Valor pago</span><div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">R$ 0</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Data *</span><div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#666">12/06 📅</div></div>
+          </div>
+          <div class="wf-sans" style="font-size:9px;color:#666;background:#f4f4f0;border-radius:6px;padding:6px 8px">Status auto: <b>Fiado</b> · Restante R$ ____ · só o valor pago entra no caixa</div>
+          <div class="hand" style="height:38px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px">Salvar venda</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. DETALHES DA VENDA -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">5 · Detalhes da venda</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:17px;color:#2a2a2a">Detalhe da venda</span></div>
+          <div style="border:1px solid #ddd;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:7px">
+            <div style="display:flex;justify-content:space-between;align-items:center"><div class="hand" style="font-size:16px;color:#2a2a2a">Carne · 80 kg</div><div class="wf-sans" style="font-size:9px;color:#e67e22;border:1px solid #e67e22;border-radius:8px;padding:1px 6px">Parcial</div></div>
+            <div style="border-top:1px dashed #ddd"></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Cliente</span><span class="wf-sans" style="font-size:10px;color:#2a2a2a">Maria</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Animais utilizados</span><span class="wf-sans" style="font-size:10px;color:#2a2a2a">2 cabeças</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Kg médio / cabeça</span><span class="wf-sans" style="font-size:10px;color:#2a2a2a">40 kg</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Valor médio / cabeça</span><span class="wf-sans" style="font-size:10px;color:#2a2a2a">R$ 480</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Preço unitário</span><span class="wf-sans" style="font-size:10px;color:#2a2a2a">R$ 12 / kg</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Valor total</span><span class="hand" style="font-size:13px;color:#2a2a2a">R$ 960</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Valor pago</span><span class="wf-sans" style="font-size:10px;color:#2e7d32">R$ 500</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Valor restante</span><span class="hand" style="font-size:13px;color:#c0392b">R$ 460</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Data</span><span class="wf-sans" style="font-size:10px;color:#2a2a2a">10/06/2026</span></div>
+          </div>
+          <div class="hand" style="height:38px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px">+ Atualizar pagamento</div>
+          <div style="display:flex;gap:8px">
+            <div class="hand" style="flex:1;height:34px;border:1.5px solid #2a2a2a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px">Editar</div>
+            <div class="hand" style="flex:1;height:34px;border:1.5px solid #c0392b;color:#c0392b;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px">Cancelar/Inativar</div>
+          </div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa;text-align:center">Cancelar reverte estoque e financeiro · não apaga (ativo=false)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. FIADOS -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">6 · Fiados / Contas a receber</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:17px;color:#2a2a2a">Fiados</span></div>
+          <div style="border:1.5px solid #c0392b;background:#fdf2f1;border-radius:10px;padding:10px;display:flex;justify-content:space-between;align-items:center"><span class="wf-sans" style="font-size:10px;color:#666">Total a receber</span><span class="hand" style="font-size:20px;color:#c0392b">R$ 1.240</span></div>
+          <div style="display:flex;gap:6px">
+            <div class="wf-sans" style="flex:1;height:28px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#888">Cliente ▾</div>
+            <div class="wf-sans" style="flex:1;height:28px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#888">Data ▾</div>
+            <div class="wf-sans" style="flex:1;height:28px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#888">Tipo ▾</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="border:1px solid #ddd;border-radius:8px;padding:9px"><div style="display:flex;justify-content:space-between"><div class="hand" style="font-size:13px;color:#2a2a2a">Cliente não informado</div><div class="wf-sans" style="font-size:8px;color:#c0392b;border:1px solid #c0392b;border-radius:8px;padding:0 5px">Fiado</div></div><div class="wf-sans" style="font-size:9px;color:#999;margin-top:2px">Ração 2 sacas · 08/06</div><div style="display:flex;justify-content:space-between;margin-top:4px"><span class="wf-sans" style="font-size:9px;color:#888">Total R$180 · Pago R$0</span><span class="hand" style="font-size:12px;color:#c0392b">Resta R$180</span></div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:9px"><div style="display:flex;justify-content:space-between"><div class="hand" style="font-size:13px;color:#2a2a2a">Maria</div><div class="wf-sans" style="font-size:8px;color:#e67e22;border:1px solid #e67e22;border-radius:8px;padding:0 5px">Parcial</div></div><div class="wf-sans" style="font-size:9px;color:#999;margin-top:2px">Carne 80kg · 10/06</div><div style="display:flex;justify-content:space-between;margin-top:4px"><span class="wf-sans" style="font-size:9px;color:#888">Total R$960 · Pago R$500</span><span class="hand" style="font-size:12px;color:#c0392b">Resta R$460</span></div></div>
+          </div>
+        </div>
+        <div class="wf-sans" style="height:48px;border-top:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-around;font-size:8px;color:#999"><div style="text-align:center"><div style="font-size:14px">▣</div>Início</div><div style="text-align:center;color:#2a2a2a"><div style="font-size:14px">≣</div>Vendas</div><div style="text-align:center"><div style="font-size:14px">▦</div>Estoque</div><div style="text-align:center"><div style="font-size:14px">▤</div>Relatórios</div><div style="text-align:center"><div style="font-size:14px">◉</div>Perfil</div></div>
+      </div>
+    </div>
+
+    <!-- 7. ATUALIZAR PAGAMENTO -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">7 · Atualizar pagamento</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:14px;display:flex;flex-direction:column;gap:12px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:17px;color:#2a2a2a">Atualizar pagamento</span></div>
+          <div style="border:1px solid #ddd;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:7px">
+            <div class="hand" style="font-size:14px;color:#2a2a2a">Maria · Carne 80 kg</div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Valor total</span><span class="wf-sans" style="font-size:10px;color:#2a2a2a">R$ 960</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Já pago</span><span class="wf-sans" style="font-size:10px;color:#2e7d32">R$ 500</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Restante</span><span class="hand" style="font-size:14px;color:#c0392b">R$ 460</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Novo pagamento *</span><div class="wf-sans" style="height:40px;border:1.5px solid #2a2a2a;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:13px;color:#bbb">R$ 0,00</div></div>
+          <div class="wf-sans" style="font-size:9px;color:#c0392b;border:1px dotted #c0392b;border-radius:6px;padding:6px 8px;background:#fdf2f1">⚠ não pode ser maior que o restante (R$ 460)</div>
+          <div class="wf-sans" style="font-size:10px;color:#666;background:#f4f4f0;border-radius:8px;padding:8px">Soma ao pago · entra no caixa · se restante = 0 → status <b>Pago</b>. Gera registro em "pagamentos".</div>
+          <div class="hand" style="height:42px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:auto">Confirmar pagamento</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ 03 · CLIENTES & COMPRAS ============ -->
+  <div class="hand" style="font-size:18px;color:#5b5950;margin-bottom:14px;border-bottom:2px dashed #c3c1b6;padding-bottom:6px;width:max-content">03 · Clientes & Compras</div>
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:48px">
+
+    <!-- 8. CLIENTES -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">8 · Clientes (opcional)</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12);position:relative">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:17px;color:#2a2a2a">Clientes</span></div>
+          <div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">🔍 Buscar cliente</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="border:1px solid #ddd;border-radius:8px;padding:10px;display:flex;justify-content:space-between;align-items:center"><div><div class="hand" style="font-size:13px;color:#2a2a2a">Maria Silva</div><div class="wf-sans" style="font-size:9px;color:#999">(34) 99999-0000</div></div><div style="text-align:right"><div class="wf-sans" style="font-size:9px;color:#c0392b">deve R$ 460</div></div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:10px;display:flex;justify-content:space-between;align-items:center"><div><div class="hand" style="font-size:13px;color:#2a2a2a">João da Moto</div><div class="wf-sans" style="font-size:9px;color:#999">sem telefone</div></div><div style="text-align:right"><div class="wf-sans" style="font-size:9px;color:#2e7d32">em dia</div></div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:10px;display:flex;justify-content:space-between;align-items:center"><div><div class="hand" style="font-size:13px;color:#2a2a2a">Pedro</div><div class="wf-sans" style="font-size:9px;color:#999">(34) 98888-1111</div></div><div style="text-align:right"><div class="wf-sans" style="font-size:9px;color:#2e7d32">em dia</div></div></div>
+          </div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa;background:#f4f4f0;border-radius:6px;padding:7px">Cadastro opcional. Vendas podem ser feitas sem cliente ou com nome livre.</div>
+        </div>
+        <div class="hand" style="position:absolute;right:16px;bottom:18px;width:48px;height:48px;background:#2a2a2a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 8px rgba(0,0,0,.3)">+</div>
+      </div>
+    </div>
+
+    <!-- 9. NOVO CLIENTE -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">9 · Novo cliente</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:14px;display:flex;flex-direction:column;gap:12px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:17px;color:#2a2a2a">Novo cliente</span></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Nome *</span><div class="wf-sans" style="height:38px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">Nome do cliente</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Telefone</span><div class="wf-sans" style="height:38px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">(00) 00000-0000</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Observação</span><div class="wf-sans" style="height:60px;border:1px dashed #bbb;border-radius:8px"></div></div>
+          <div class="wf-sans" style="font-size:9px;color:#666;background:#f4f4f0;border-radius:6px;padding:7px 8px">Só o <b>nome</b> é obrigatório. Telefone e observação ajudam na cobrança de fiados.</div>
+          <div class="hand" style="height:42px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:auto">Salvar cliente</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. COMPRAS LISTA -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">10 · Compras (lista)</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12);position:relative">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:17px;color:#2a2a2a">Compras</span></div>
+          <div style="border:1.5px solid #2a2a2a;border-radius:10px;padding:9px;display:flex;justify-content:space-between;align-items:center"><span class="wf-sans" style="font-size:10px;color:#666">Total comprado (mês)</span><span class="hand" style="font-size:17px;color:#2a2a2a">R$ 2.300</span></div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <div class="hand" style="font-size:9px;border:1.5px solid #2a2a2a;border-radius:14px;padding:3px 9px">Todas</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;border-radius:14px;padding:3px 9px;color:#888">Porcos</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;border-radius:14px;padding:3px 9px;color:#888">Milho</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;border-radius:14px;padding:3px 9px;color:#888">Ração</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="border:1px solid #ddd;border-radius:8px;padding:9px;display:flex;justify-content:space-between"><div><div class="hand" style="font-size:13px;color:#2a2a2a">Leitões · 10 cab.</div><div class="wf-sans" style="font-size:9px;color:#999">Fornec. Granja Boa · 02/06</div></div><div class="hand" style="font-size:13px;color:#c0392b">−R$ 1.500</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:9px;display:flex;justify-content:space-between"><div><div class="hand" style="font-size:13px;color:#2a2a2a">Ração · 8 sacas</div><div class="wf-sans" style="font-size:9px;color:#999">Agro Sul · 05/06</div></div><div class="hand" style="font-size:13px;color:#c0392b">−R$ 640</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:9px;display:flex;justify-content:space-between"><div><div class="hand" style="font-size:13px;color:#2a2a2a">Milho · 5 sacas</div><div class="wf-sans" style="font-size:9px;color:#999">— · 06/06</div></div><div class="hand" style="font-size:13px;color:#c0392b">−R$ 160</div></div>
+          </div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa;background:#f4f4f0;border-radius:6px;padding:6px">Compra aumenta estoque e reduz saldo.</div>
+        </div>
+        <div class="hand" style="position:absolute;right:16px;bottom:18px;width:48px;height:48px;background:#2a2a2a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 8px rgba(0,0,0,.3)">+</div>
+      </div>
+    </div>
+
+    <!-- 11. NOVA COMPRA -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">11 · Nova compra</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:11px 13px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:17px;color:#2a2a2a">Nova compra</span></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Tipo *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:11px;color:#666">Compra de porcos/leitões ▾</div></div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa">Porcos/leitões · Milho · Ração · Outros</div>
+          <div style="display:flex;gap:7px">
+            <div style="flex:1.4;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Quantidade *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">0</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Unidade</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 8px;font-size:11px;color:#666">Cab. ▾</div></div>
+          </div>
+          <div style="display:flex;gap:7px">
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Valor unit. *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">R$ 0</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Valor total</span><div class="wf-sans" style="height:34px;border:1px solid #2a2a2a;background:#f4f4f0;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#2a2a2a">= auto 🔒</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Fornecedor</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">Nome (opcional)</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Data *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#666">12/06 📅</div></div>
+          <div class="wf-sans" style="font-size:9px;color:#666;background:#f4f4f0;border-radius:6px;padding:7px 8px"><b>+ estoque</b> do item · <b>− saldo</b> pelo valor total</div>
+          <div class="hand" style="height:38px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px">Salvar compra</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ 04 · ESTOQUE & CONSUMO ============ -->
+  <div class="hand" style="font-size:18px;color:#5b5950;margin-bottom:14px;border-bottom:2px dashed #c3c1b6;padding-bottom:6px;width:max-content">04 · Estoque & Consumo</div>
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:48px">
+
+    <!-- 12. ESTOQUE -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">12 · Estoque</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12);position:relative">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div class="hand" style="font-size:20px;color:#2a2a2a">Estoque</div>
+          <div style="display:flex;gap:6px">
+            <div class="hand" style="flex:1;height:32px;background:#2a2a2a;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px">+ Movimentação</div>
+            <div class="hand" style="flex:1;height:32px;border:1.5px solid #2a2a2a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px">+ Consumo</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="border:1px solid #ddd;border-radius:8px;padding:10px;display:flex;justify-content:space-between;align-items:center"><div><div class="hand" style="font-size:14px;color:#2a2a2a">Porcos</div><div class="wf-sans" style="font-size:9px;color:#999">últ. mov. 10/06 · venda</div></div><div style="text-align:right"><div class="hand" style="font-size:17px">48</div><div class="wf-sans" style="font-size:8px;color:#999">cabeças</div></div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:10px;display:flex;justify-content:space-between;align-items:center"><div><div class="hand" style="font-size:14px;color:#2a2a2a">Milho</div><div class="wf-sans" style="font-size:9px;color:#999">últ. mov. 09/06 · consumo</div></div><div style="text-align:right"><div class="hand" style="font-size:17px">12</div><div class="wf-sans" style="font-size:8px;color:#999">sacas</div></div></div>
+            <div style="border:1.5px solid #c0392b;border-radius:8px;padding:10px;display:flex;justify-content:space-between;align-items:center;background:#fdf2f1"><div><div class="hand" style="font-size:14px;color:#2a2a2a">Ração</div><div class="wf-sans" style="font-size:8px;color:#c0392b">⚠ estoque baixo</div></div><div style="text-align:right"><div class="hand" style="font-size:17px;color:#c0392b">3</div><div class="wf-sans" style="font-size:8px;color:#999">sacas</div></div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:10px;display:flex;justify-content:space-between;align-items:center"><div><div class="hand" style="font-size:14px;color:#2a2a2a">Outros</div><div class="wf-sans" style="font-size:9px;color:#999">—</div></div><div style="text-align:right"><div class="hand" style="font-size:17px">—</div></div></div>
+          </div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa;background:#f4f4f0;border-radius:6px;padding:6px">Tocar item → histórico de movimentações. Estoque nunca negativo.</div>
+        </div>
+        <div class="hand" style="position:absolute;right:16px;bottom:62px;width:48px;height:48px;background:#2a2a2a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 8px rgba(0,0,0,.3)">+</div>
+        <div class="wf-sans" style="height:48px;border-top:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-around;font-size:8px;color:#999"><div style="text-align:center"><div style="font-size:14px">▣</div>Início</div><div style="text-align:center"><div style="font-size:14px">≣</div>Vendas</div><div style="text-align:center;color:#2a2a2a"><div style="font-size:14px">▦</div>Estoque</div><div style="text-align:center"><div style="font-size:14px">▤</div>Relatórios</div><div style="text-align:center"><div style="font-size:14px">◉</div>Perfil</div></div>
+      </div>
+    </div>
+
+    <!-- 13. NOVA MOVIMENTAÇÃO -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">13 · Nova movimentação</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:13px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:16px;color:#2a2a2a">Movimentação de estoque</span></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Item *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:11px;color:#666">Porcos ▾</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Tipo *</span>
+            <div style="display:flex;gap:5px;flex-wrap:wrap">
+              <div class="hand" style="font-size:10px;border:1.5px solid #2a2a2a;border-radius:8px;padding:5px 9px">Entrada</div>
+              <div class="hand" style="font-size:10px;border:1px solid #ccc;color:#888;border-radius:8px;padding:5px 9px">Saída</div>
+              <div class="hand" style="font-size:10px;border:1px solid #ccc;color:#888;border-radius:8px;padding:5px 9px">Perda</div>
+              <div class="hand" style="font-size:10px;border:1px solid #ccc;color:#888;border-radius:8px;padding:5px 9px">Consumo</div>
+              <div class="hand" style="font-size:10px;border:1px solid #ccc;color:#888;border-radius:8px;padding:5px 9px">Ajuste</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Quantidade *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">0</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Motivo</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">Ex: nascimento, correção…</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Data *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#666">12/06 📅</div></div>
+          <div class="wf-sans" style="font-size:8.5px;color:#666;background:#f4f4f0;border-radius:6px;padding:7px">Entrada (+) · Saída/Perda/Consumo (−) · Ajuste (±) · <b>não permite negativo</b></div>
+          <div class="hand" style="height:40px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:auto">Salvar movimentação</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. CONSUMO -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">14 · Consumo ração/milho</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:14px;display:flex;flex-direction:column;gap:11px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:17px;color:#2a2a2a">Registrar consumo</span></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Item *</span>
+            <div style="display:flex;gap:6px">
+              <div class="hand" style="flex:1;height:36px;border:1.5px solid #2a2a2a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px">Ração</div>
+              <div class="hand" style="flex:1;height:36px;border:1px solid #ccc;color:#888;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px">Milho</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Quantidade (sacas) *</span><div class="wf-sans" style="height:36px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">0 sacas</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Data *</span><div class="wf-sans" style="height:36px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#666">12/06 📅</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Observação</span><div class="wf-sans" style="height:44px;border:1px dashed #bbb;border-radius:8px"></div></div>
+          <div class="wf-sans" style="font-size:10px;color:#666;background:#f4f4f0;border-radius:6px;padding:8px">Reduz o estoque (não é venda). Estoque atual Ração: <b>3 sacas</b>. Não pode exceder o disponível.</div>
+          <div class="hand" style="height:42px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:auto">Salvar consumo</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ 05 · DESPESAS & GASTOS FIXOS ============ -->
+  <div class="hand" style="font-size:18px;color:#5b5950;margin-bottom:14px;border-bottom:2px dashed #c3c1b6;padding-bottom:6px;width:max-content">05 · Despesas & Gastos fixos</div>
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:48px">
+
+    <!-- 15. DESPESAS DOS ANIMAIS -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">15 · Despesas dos animais</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:13px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:16px;color:#2a2a2a">Despesa dos animais</span></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Categoria *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:11px;color:#666">Remédio ▾</div></div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa;line-height:1.5">Ração · Milho p/ consumo · Remédio · Veterinário · Transporte · Funcionário/mão de obra · Manutenção · Outros</div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Valor *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">R$ 0,00</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Descrição</span><div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px"></div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Data *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#666">12/06 📅</div></div>
+          <div class="wf-sans" style="font-size:8px;color:#666;background:#f4f4f0;border-radius:6px;padding:6px">− saldo · entra no lucro (custo direto) · <b>separado de construção</b></div>
+          <div class="hand" style="height:36px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px">Salvar despesa</div>
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Recentes</div>
+          <div style="border:1px solid #eee;border-radius:8px;padding:7px;display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Veterinário · 11/06</span><span class="hand" style="font-size:12px">R$ 150</span></div>
+          <div style="border:1px solid #eee;border-radius:8px;padding:7px;display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Remédio · 09/06</span><span class="hand" style="font-size:12px">R$ 80</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16. GASTOS FIXOS / CONSTRUÇÃO -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">16 · Gastos fixos / construção</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:13px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:16px;color:#2a2a2a">Gasto fixo / construção</span></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Categoria *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:11px;color:#666">Construção ▾</div></div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa;line-height:1.5">Construção · Reforma · Equipamentos · Ferramentas · Latas · Baldes · Canos · Arames · Madeiras · Telhas · Materiais diversos · Outros</div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Valor *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#bbb">R$ 0,00</div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Descrição</span><div class="wf-sans" style="height:32px;border:1px dashed #bbb;border-radius:8px"></div></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><span class="wf-sans" style="font-size:9px;color:#888">Data *</span><div class="wf-sans" style="height:34px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#666">12/06 📅</div></div>
+          <div class="wf-sans" style="font-size:8px;color:#666;background:#f4f4f0;border-radius:6px;padding:6px">− saldo · investimento estrutural · aparece <b>separado</b>; lucro pode ser visto com/sem construção</div>
+          <div class="hand" style="height:36px;background:#2a2a2a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px">Salvar gasto</div>
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Recentes</div>
+          <div style="border:1px solid #eee;border-radius:8px;padding:7px;display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Telhas · 07/06</span><span class="hand" style="font-size:12px">R$ 400</span></div>
+          <div style="border:1px solid #eee;border-radius:8px;padding:7px;display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Canos · 03/06</span><span class="hand" style="font-size:12px">R$ 90</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ 06 · RELATÓRIOS & SISTEMA ============ -->
+  <div class="hand" style="font-size:18px;color:#5b5950;margin-bottom:14px;border-bottom:2px dashed #c3c1b6;padding-bottom:6px;width:max-content">06 · Relatórios & Sistema</div>
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:24px">
+
+    <!-- 17. RESUMO MENSAL -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">17 · Resumo mensal</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center"><div class="hand" style="font-size:18px;color:#2a2a2a">Resumo mensal</div><div class="wf-sans" style="font-size:9px;color:#2a2a2a;border:1px dashed #bbb;border-radius:12px;padding:2px 8px">◀ junho 2026 ▶</div></div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;justify-content:space-between;border-bottom:1px dotted #e5e5e5;padding-bottom:3px"><span class="wf-sans" style="font-size:10px;color:#666">Total vendido</span><span class="hand" style="font-size:12px">R$ ____</span></div>
+            <div style="display:flex;justify-content:space-between;padding-left:10px"><span class="wf-sans" style="font-size:9px;color:#999">· Porco/Carne</span><span class="wf-sans" style="font-size:10px">R$ __</span></div>
+            <div style="display:flex;justify-content:space-between;padding-left:10px"><span class="wf-sans" style="font-size:9px;color:#999">· Milho</span><span class="wf-sans" style="font-size:10px">R$ __</span></div>
+            <div style="display:flex;justify-content:space-between;padding-left:10px;border-bottom:1px dotted #e5e5e5;padding-bottom:3px"><span class="wf-sans" style="font-size:9px;color:#999">· Ração</span><span class="wf-sans" style="font-size:10px">R$ __</span></div>
+            <div style="display:flex;justify-content:space-between;border-bottom:1px dotted #e5e5e5;padding-bottom:3px"><span class="wf-sans" style="font-size:10px;color:#666">Total comprado</span><span class="hand" style="font-size:12px">R$ ____</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Despesas dos animais</span><span class="wf-sans" style="font-size:10px">R$ __</span></div>
+            <div style="display:flex;justify-content:space-between;border-bottom:1px dotted #e5e5e5;padding-bottom:3px"><span class="wf-sans" style="font-size:10px;color:#666">Gastos fixos/construção</span><span class="wf-sans" style="font-size:10px">R$ __</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Em fiados / a receber</span><span class="wf-sans" style="font-size:10px;color:#c0392b">R$ __</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px">
+            <div style="border:1.5px solid #2a2a2a;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:8px;color:#999">Lucro bruto mês</div><div class="hand" style="font-size:14px">R$ __</div></div>
+            <div style="border:1.5px solid #2a2a2a;border-radius:8px;padding:7px"><div class="wf-sans" style="font-size:8px;color:#999">Lucro líquido mês</div><div class="hand" style="font-size:14px">R$ __</div></div>
+          </div>
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Porcos no mês</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Kg vendidos · animais</span><span class="wf-sans" style="font-size:10px">__ kg · __</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Média kg/cabeça</span><span class="wf-sans" style="font-size:10px">__ kg</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Valor médio/cabeça</span><span class="wf-sans" style="font-size:10px">R$ __</span></div>
+          </div>
+        </div>
+        <div class="wf-sans" style="height:48px;border-top:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-around;font-size:8px;color:#999"><div style="text-align:center"><div style="font-size:14px">▣</div>Início</div><div style="text-align:center"><div style="font-size:14px">≣</div>Vendas</div><div style="text-align:center"><div style="font-size:14px">▦</div>Estoque</div><div style="text-align:center;color:#2a2a2a"><div style="font-size:14px">▤</div>Relatórios</div><div style="text-align:center"><div style="font-size:14px">◉</div>Perfil</div></div>
+      </div>
+    </div>
+
+    <!-- 18. ANÁLISE DE PORCOS -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">18 · Análise de porcos</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div style="display:flex;align-items:center;gap:8px"><span class="hand" style="font-size:18px">←</span><span class="hand" style="font-size:16px;color:#2a2a2a">Desempenho dos porcos</span></div>
+          <div class="wf-sans" style="font-size:9px;color:#2a2a2a;border:1px dashed #bbb;border-radius:12px;padding:3px 9px;align-self:flex-start">Período: ◀ junho 2026 ▶</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+            <div style="border:1px solid #ddd;border-radius:8px;padding:8px"><div class="wf-sans" style="font-size:8px;color:#999">Kg vendidos</div><div class="hand" style="font-size:16px">__ kg</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:8px"><div class="wf-sans" style="font-size:8px;color:#999">Animais usados</div><div class="hand" style="font-size:16px">__</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:8px"><div class="wf-sans" style="font-size:8px;color:#999">Média kg/cabeça</div><div class="hand" style="font-size:16px">__</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:8px"><div class="wf-sans" style="font-size:8px;color:#999">R$ médio/cabeça</div><div class="hand" style="font-size:16px">R$ __</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:8px"><div class="wf-sans" style="font-size:8px;color:#999">R$ médio/kg</div><div class="hand" style="font-size:16px">R$ __</div></div>
+            <div style="border:1px solid #ddd;border-radius:8px;padding:8px"><div class="wf-sans" style="font-size:8px;color:#999">Receita carne</div><div class="hand" style="font-size:16px">R$ __</div></div>
+          </div>
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Compra × Venda</div>
+          <div style="border:1.5px solid #2a2a2a;border-radius:8px;padding:9px;display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Gasto comprando leitões</span><span class="wf-sans" style="font-size:10px;color:#c0392b">R$ __</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#888">Vendido em carne</span><span class="wf-sans" style="font-size:10px;color:#2e7d32">R$ __</span></div>
+            <div style="border-top:1px dashed #ddd"></div>
+            <div style="display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:10px;color:#666">Resultado</span><span class="hand" style="font-size:13px">R$ __</span></div>
+          </div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa;background:#f4f4f0;border-radius:6px;padding:6px">Mostra se a compra dos leitões está compensando. Divisão por zero tratada (sem animais → 0).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 19. HISTÓRICO -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">19 · Histórico</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:9px;flex:1">
+          <div class="hand" style="font-size:20px;color:#2a2a2a">Histórico</div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <div class="hand" style="font-size:9px;border:1.5px solid #2a2a2a;border-radius:12px;padding:2px 9px">Tudo</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;color:#888;border-radius:12px;padding:2px 9px">Vendas</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;color:#888;border-radius:12px;padding:2px 9px">Compras</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;color:#888;border-radius:12px;padding:2px 9px">Despesas</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;color:#888;border-radius:12px;padding:2px 9px">Gastos fixos</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;color:#888;border-radius:12px;padding:2px 9px">Estoque</div>
+            <div class="hand" style="font-size:9px;border:1px solid #ccc;color:#888;border-radius:12px;padding:2px 9px">Pagamentos</div>
+          </div>
+          <div class="wf-sans" style="height:28px;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:#bbb">🔍 Buscar · filtros: data, categoria, cliente…</div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa">12 JUN</div>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:7px;display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;align-items:center"><span style="font-size:13px">↑</span><div><div class="hand" style="font-size:12px;color:#2a2a2a">Venda · Carne</div><div class="wf-sans" style="font-size:8px;color:#999">João</div></div></div><span class="hand" style="font-size:12px;color:#2e7d32">+R$ 960</span></div>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:7px;display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;align-items:center"><span style="font-size:13px">↓</span><div><div class="hand" style="font-size:12px;color:#2a2a2a">Compra · Ração</div></div></div><span class="hand" style="font-size:12px;color:#c0392b">−R$ 640</span></div>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:7px;display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;align-items:center"><span style="font-size:13px">▦</span><div><div class="hand" style="font-size:12px;color:#2a2a2a">Consumo · Milho</div><div class="wf-sans" style="font-size:8px;color:#999">−2 sacas</div></div></div><span class="wf-sans" style="font-size:9px;color:#999">estoque</span></div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa">11 JUN</div>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:7px;display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;align-items:center"><span style="font-size:13px">＄</span><div><div class="hand" style="font-size:12px;color:#2a2a2a">Pagamento · Maria</div></div></div><span class="hand" style="font-size:12px;color:#2e7d32">+R$ 500</span></div>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:7px;display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;align-items:center"><span style="font-size:13px">▤</span><div><div class="hand" style="font-size:12px;color:#2a2a2a">Gasto fixo · Telhas</div></div></div><span class="hand" style="font-size:12px;color:#c0392b">−R$ 400</span></div>
+        </div>
+        <div class="wf-sans" style="height:48px;border-top:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-around;font-size:8px;color:#999"><div style="text-align:center"><div style="font-size:14px">▣</div>Início</div><div style="text-align:center"><div style="font-size:14px">≣</div>Vendas</div><div style="text-align:center"><div style="font-size:14px">▦</div>Estoque</div><div style="text-align:center;color:#2a2a2a"><div style="font-size:14px">▤</div>Relatórios</div><div style="text-align:center"><div style="font-size:14px">◉</div>Perfil</div></div>
+      </div>
+    </div>
+
+    <!-- 20. PERFIL -->
+    <div style="flex:none;width:300px">
+      <div class="hand" style="font-size:15px;color:#555;margin-bottom:10px">20 · Perfil / configurações</div>
+      <div style="width:300px;min-height:600px;background:#fff;border:2px solid #2a2a2a;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 10px rgba(0,0,0,.12)">
+        <div class="wf-sans" style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#aaa"><span>9:41</span><span>▮▮▮ ▢</span></div>
+        <div style="padding:14px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div class="hand" style="font-size:20px;color:#2a2a2a">Perfil</div>
+          <div style="display:flex;align-items:center;gap:12px;border:1px solid #ddd;border-radius:10px;padding:12px"><div class="stripe" style="width:46px;height:46px;border-radius:50%;border:1px solid #ccc"></div><div><div class="hand" style="font-size:15px;color:#2a2a2a">Usuário</div><div class="wf-sans" style="font-size:9px;color:#999"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1c7ded2d4f1d6c3d0dfdbd09fd2dedc">[email&#160;protected]</a> · acesso total</div></div></div>
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px">Negócio</div>
+          <div style="border:1.5px solid #2a2a2a;border-radius:8px;padding:10px;display:flex;justify-content:space-between;align-items:center"><div><div class="wf-sans" style="font-size:11px;color:#2a2a2a">Capital inicial</div><div class="wf-sans" style="font-size:8px;color:#999">"comecei com quanto?"</div></div><span class="hand" style="font-size:15px;color:#2a2a2a">R$ ____ ✎</span></div>
+          <div class="wf-sans" style="font-size:8px;color:#aaa;line-height:1.4">Valor único de partida. Ponto inicial do Saldo do Dashboard.</div>
+          <div style="border:1px solid #eee;border-radius:8px;padding:9px;display:flex;justify-content:space-between;align-items:center"><span class="wf-sans" style="font-size:11px;color:#666">Estoque mínimo (alertas)</span><span class="wf-sans" style="font-size:13px;color:#999">›</span></div>
+          <div class="wf-sans" style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">Sobre</div>
+          <div style="border:1px solid #eee;border-radius:8px;padding:9px;display:flex;justify-content:space-between"><span class="wf-sans" style="font-size:11px;color:#666">Versão</span><span class="wf-sans" style="font-size:11px;color:#999">1.0.0</span></div>
+          <div style="border:1px solid #eee;border-radius:8px;padding:9px;display:flex;justify-content:space-between;align-items:center"><span class="wf-sans" style="font-size:11px;color:#666">Política de privacidade</span><span class="wf-sans" style="font-size:13px;color:#999">›</span></div>
+          <div style="border:1px solid #eee;border-radius:8px;padding:9px;display:flex;justify-content:space-between;align-items:center"><span class="wf-sans" style="font-size:11px;color:#666">Instalar app (PWA)</span><span class="wf-sans" style="font-size:9px;color:#2a2a2a;border:1px solid #2a2a2a;border-radius:8px;padding:1px 7px">Instalar</span></div>
+          <div style="border:1px solid #eee;border-radius:8px;padding:9px;display:flex;justify-content:space-between;align-items:center"><span class="wf-sans" style="font-size:11px;color:#666">Sincronização Supabase</span><span class="wf-sans" style="font-size:9px;color:#2e7d32">● ativo</span></div>
+          <div class="hand" style="height:38px;border:1.5px solid #c0392b;color:#c0392b;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:auto">Sair</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="wf-sans" style="font-size:11px;color:#9a988f;max-width:720px;line-height:1.6;margin-top:20px">Convenções lo-fi: <b>traço pontilhado</b> = campo de input · <b>borda sólida</b> = valor calculado/destaque · <b>* obrigatório</b> · vermelho = erro/alerta · listras = imagem/avatar placeholder. Cada tela tem um <b>.md</b> em <b>/docs</b> com objetivo, campos, obrigatórios, ações, validações, estados (carregando/vazio/erro/com dados), navegação, dados Supabase e notas de implementação (PWA/React).</div>
+
+</div>
+</div>
+</body>
+</html>

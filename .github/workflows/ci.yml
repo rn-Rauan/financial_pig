@@ -1,0 +1,57 @@
+name: Repository hygiene
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  hygiene:
+    name: Documentation and secret hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Confirm required project documents
+        shell: bash
+        run: |
+          required=(
+            ".specify/memory/constitution.md"
+            ".specify/templates/plan-template.md"
+            ".specify/templates/spec-template.md"
+            ".specify/templates/tasks-template.md"
+            "docs/manual-validation.md"
+            ".env.example"
+            ".gitignore"
+          )
+
+          for path in "${required[@]}"; do
+            if [ ! -f "$path" ]; then
+              echo "Missing required file: $path"
+              exit 1
+            fi
+          done
+
+      - name: Ensure real environment files are not tracked
+        shell: bash
+        run: |
+          tracked_env_files="$(git ls-files | grep -E '(^|/)\.env($|\.)' | grep -vE '(^|/)\.env\.example$' || true)"
+          if [ -n "$tracked_env_files" ]; then
+            echo "Tracked environment files are not allowed:"
+            echo "$tracked_env_files"
+            exit 1
+          fi
+
+      - name: Confirm automated tests are not required by templates
+        shell: bash
+        run: |
+          if grep -R "write these tests FIRST\|automated tests are required\|npm test\|vitest\|playwright test" .specify/templates docs README.md; then
+            echo "Found automated-test-oriented wording in project guidance."
+            exit 1
+          fi
+
+          echo "Repository hygiene checks passed. No automated tests were run."
