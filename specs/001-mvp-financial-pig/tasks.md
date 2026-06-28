@@ -128,13 +128,13 @@ verify totals, status, receivables, cash, and stock.
 **Manual Validation**: Create credit/partial sales, register later payments, and
 verify remaining amount, status, history, and cash balance.
 
-- [ ] T053 [P] [US4] Implement receivables list page in `src/features/receivables/ReceivablesPage.tsx`
-- [ ] T054 [P] [US4] Implement payment update page/modal in `src/features/receivables/PaymentUpdatePage.tsx`
-- [ ] T055 [US4] Implement receivables query wrapper in `src/features/receivables/receivablesService.ts`
-- [ ] T056 [US4] Implement payment mutation wrapper for `registrar_pagamento_venda` in `src/features/receivables/paymentService.ts`
-- [ ] T057 [US4] Implement payment validation in `src/features/receivables/paymentValidation.ts`
-- [ ] T058 [US4] Implement receivables filters by customer/name/date/status/type in `src/features/receivables/components/ReceivablesFilters.tsx`
-- [ ] T059 [US4] Wire receivables and payment routes in `src/routes/AppRoutes.tsx`
+- [x] T053 [P] [US4] Implement receivables list page in `src/features/receivables/ReceivablesPage.tsx`
+- [x] T054 [P] [US4] Implement payment update page/modal in `src/features/receivables/PaymentUpdatePage.tsx`
+- [x] T055 [US4] Implement receivables query wrapper in `src/features/receivables/receivablesService.ts`
+- [x] T056 [US4] Implement payment mutation wrapper for `registrar_pagamento_venda` in `src/features/receivables/paymentService.ts`
+- [x] T057 [US4] Implement payment validation in `src/features/receivables/paymentValidation.ts`
+- [x] T058 [US4] Implement receivables filters by customer/name/date/status/type in `src/features/receivables/components/ReceivablesFilters.tsx`
+- [x] T059 [US4] Wire receivables and payment routes in `src/routes/AppRoutes.tsx`
 - [ ] T060 [US4] Manually validate partial payment, full payment, overpayment rejection, and no-customer receivable scenarios in `docs/manual-validation.md`
 
 **Checkpoint**: Receivables are separate from cash and payments are safe.

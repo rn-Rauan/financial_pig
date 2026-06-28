@@ -41,6 +41,14 @@ export function SalesListPage() {
         </Link>
       </div>
 
+      <Link
+        to="/recebiveis"
+        className="flex items-center justify-between rounded-xl bg-white p-3 text-sm font-medium text-brand-dark shadow-sm active:bg-gray-50"
+      >
+        Contas a receber
+        <span aria-hidden>›</span>
+      </Link>
+
       {status === "loading" ? <LoadingState message="Carregando vendas..." /> : null}
 
       {status === "error" ? (

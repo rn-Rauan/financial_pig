@@ -69,7 +69,7 @@ function nullableInt(value: unknown): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
-interface SaleRowRaw {
+export interface SaleRowRaw {
   id: string;
   cliente_id: string | null;
   nome_cliente: string | null;
@@ -89,7 +89,7 @@ interface SaleRowRaw {
   clientes: { nome: string } | { nome: string }[] | null;
 }
 
-function mapSale(row: SaleRowRaw): Sale {
+export function mapSale(row: SaleRowRaw): Sale {
   // The embedded relation can arrive as an object or single-element array.
   const cliente = Array.isArray(row.clientes) ? row.clientes[0] : row.clientes;
   return {
@@ -113,7 +113,7 @@ function mapSale(row: SaleRowRaw): Sale {
   };
 }
 
-const SALE_SELECT =
+export const SALE_SELECT =
   "id, cliente_id, nome_cliente, tipo_venda, produto, quantidade, unidade, " +
   "animais_utilizados, preco_unitario, valor_total, valor_pago, valor_restante, " +
   "status_pagamento, data_venda, observacao, created_at, clientes(nome)";

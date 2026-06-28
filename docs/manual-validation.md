@@ -26,6 +26,9 @@ validation:
      dashboard indicators.
   4. `004_registrar_venda.sql` — real `registrar_venda` RPC (replaces the stub):
      atomic sale + stock + history with non-negative stock protection.
+  5. `005_registrar_pagamento_venda.sql` — real `registrar_pagamento_venda` RPC
+     (replaces the stub): atomic later payment that updates the sale's
+     paid/remaining/status and writes payment + history rows.
 - Preferred migration command after `supabase login` and `supabase link`:
   `supabase db push --dry-run`, then `supabase db push`.
 - **RLS is enabled** on all business tables; each policy scopes rows to
@@ -36,10 +39,11 @@ validation:
 - Local run: `npm install` then `npm run dev`, opened at a mobile-width
   viewport. Do not add or run automated test commands.
 
-> Note: `registrar_venda` is now implemented (migration 004). The remaining RPCs
-> in `002_business_rpcs.sql` (`registrar_pagamento_venda`, `registrar_compra`,
-> `registrar_movimentacao_estoque`, `registrar_consumo`, `inativar_registro`)
-> are still stubs that raise "not yet implemented" until their user-story phase.
+> Note: `registrar_venda` (migration 004) and `registrar_pagamento_venda`
+> (migration 005) are now implemented. The remaining RPCs in
+> `002_business_rpcs.sql` (`registrar_compra`, `registrar_movimentacao_estoque`,
+> `registrar_consumo`, `inativar_registro`) are still stubs that raise
+> "not yet implemented" until their user-story phase.
 
 ## Required Validation
 
@@ -124,9 +128,30 @@ receivables, cash, and stock.
 8. Cash balance increases only by amounts actually paid; receivables stay
    separate; dashboard reflects revenue by type and current stock.
 
-> Note: later payments on partial/credit sales (US4) and purchases/consumption
-> (US5) are still stubs, so end-to-end receivables settlement and stock refills
-> via the app come in those phases. Sales (US3) are fully functional now.
+> Note: purchases/consumption (US5) are still stubs, so stock refills via the app
+> come in that phase. Sales (US3) and later payments (US4) are functional now.
+
+### US4 - Manage Credit Sales and Later Payments (T060) — pending
+
+Builds on the US3 receivables (the partial corn sale, restante R$ 100,00, and the
+credit feed sale, restante R$ 90,00). Open "Vendas → Contas a receber".
+
+1. Receivables list shows only active sales with status Parcial or Fiado; the
+   "Total a receber" equals the sum of the listed remaining amounts.
+2. Filters by customer/name, status, type, and date range narrow the list; the
+   total updates accordingly.
+3. Partial payment: on the corn sale (restante R$ 100,00), pay R$ 60,00 →
+   restante becomes R$ 40,00, status stays Parcial, and cash balance increases by
+   exactly R$ 60,00 (receivables drop by R$ 60,00).
+4. Full payment: pay the remaining R$ 40,00 (or use "Pagar restante") → status
+   becomes Pago, restante R$ 0,00, and the sale leaves the receivables list.
+5. Overpayment rejection: a payment greater than the remaining amount is blocked
+   with a clear message (client validation blocks; RPC also rejects) and no
+   payment row is created.
+6. No-customer receivable: a credit/partial sale registered with a free name (or
+   no customer) still appears and can be paid; the name is shown.
+7. History records each `pagamento_recebido`; the sale's later payments are
+   reflected in `pagamentos_venda` without double-counting cash on the dashboard.
 
 ## Final Delivery Gate
 
