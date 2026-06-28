@@ -105,16 +105,16 @@ financial and stock effects.
 **Manual Validation**: Register sales of pork/meat, corn, feed, and other, then
 verify totals, status, receivables, cash, and stock.
 
-- [ ] T042 [P] [US3] Implement sales list page in `src/features/sales/SalesListPage.tsx`
-- [ ] T043 [P] [US3] Implement sale form page in `src/features/sales/SaleFormPage.tsx`
-- [ ] T044 [P] [US3] Implement sale detail page in `src/features/sales/SaleDetailPage.tsx`
-- [ ] T045 [US3] Implement sale query and mutation wrapper for `registrar_venda` in `src/features/sales/salesService.ts`
-- [ ] T046 [US3] Implement sale type, unit, customer-name, and animals-used form behavior in `src/features/sales/components/SaleForm.tsx`
-- [ ] T047 [US3] Implement automatic total, remaining, status, kg/head, and value/head display in `src/features/sales/components/SaleCalculatedFields.tsx`
-- [ ] T048 [US3] Implement sale validation messages in `src/features/sales/saleValidation.ts`
-- [ ] T049 [US3] Implement customer picker/name fallback in `src/features/sales/components/CustomerSaleField.tsx`
-- [ ] T050 [US3] Implement sale detail financial and stock effect summary in `src/features/sales/SaleDetailPage.tsx`
-- [ ] T051 [US3] Wire sales routes in `src/routes/AppRoutes.tsx`
+- [x] T042 [P] [US3] Implement sales list page in `src/features/sales/SalesListPage.tsx`
+- [x] T043 [P] [US3] Implement sale form page in `src/features/sales/SaleFormPage.tsx`
+- [x] T044 [P] [US3] Implement sale detail page in `src/features/sales/SaleDetailPage.tsx`
+- [x] T045 [US3] Implement sale query and mutation wrapper for `registrar_venda` in `src/features/sales/salesService.ts`
+- [x] T046 [US3] Implement sale type, unit, customer-name, and animals-used form behavior in `src/features/sales/components/SaleForm.tsx`
+- [x] T047 [US3] Implement automatic total, remaining, status, kg/head, and value/head display in `src/features/sales/components/SaleCalculatedFields.tsx`
+- [x] T048 [US3] Implement sale validation messages in `src/features/sales/saleValidation.ts`
+- [x] T049 [US3] Implement customer picker/name fallback in `src/features/sales/components/CustomerSaleField.tsx`
+- [x] T050 [US3] Implement sale detail financial and stock effect summary in `src/features/sales/SaleDetailPage.tsx`
+- [x] T051 [US3] Wire sales routes in `src/routes/AppRoutes.tsx`
 - [ ] T052 [US3] Manually validate paid, partial, credit, pork/meat, corn, feed, and overpayment scenarios in `docs/manual-validation.md`
 
 **Checkpoint**: Main sales flow is functional and manually validated.

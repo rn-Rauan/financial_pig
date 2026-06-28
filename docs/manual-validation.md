@@ -24,6 +24,8 @@ validation:
      `inativar_registro` (full logic lands in their user-story phases).
   3. `003_dashboard_read_model.sql` - read-only `dashboard_mensal` RPC for
      dashboard indicators.
+  4. `004_registrar_venda.sql` — real `registrar_venda` RPC (replaces the stub):
+     atomic sale + stock + history with non-negative stock protection.
 - Preferred migration command after `supabase login` and `supabase link`:
   `supabase db push --dry-run`, then `supabase db push`.
 - **RLS is enabled** on all business tables; each policy scopes rows to
@@ -34,9 +36,10 @@ validation:
 - Local run: `npm install` then `npm run dev`, opened at a mobile-width
   viewport. Do not add or run automated test commands.
 
-> Note: RPC functions in `002_business_rpcs.sql` are stubs that intentionally
-> raise "not yet implemented" until their respective user-story phase. Coupled
-> financial/stock flows cannot be validated end-to-end until those phases land.
+> Note: `registrar_venda` is now implemented (migration 004). The remaining RPCs
+> in `002_business_rpcs.sql` (`registrar_pagamento_venda`, `registrar_compra`,
+> `registrar_movimentacao_estoque`, `registrar_consumo`, `inativar_registro`)
+> are still stubs that raise "not yet implemented" until their user-story phase.
 
 ## Required Validation
 
@@ -100,10 +103,30 @@ Record results here when executed.
 4. Pig averages show "—" (not an error) when there are no animals/kg.
 5. Data-load failure shows the retryable error state.
 
-> Note: full end-to-end totals depend on the sales/payments/purchases write RPCs
-> (US3–US5), which are still stubs. The dashboard read model
-> (`dashboard_mensal`) and UI are ready to validate against data inserted
-> directly in Supabase.
+### US3 - Register Sales and Payments (T052) — pending
+
+Seed stock first (quickstart dataset): Porcos/leitões 10 cabeças, Milho 20
+sacas, Ração 15 sacas. Then register sales and verify totals, status,
+receivables, cash, and stock.
+
+1. Paid pork/meat sale: 40 kg @ R$ 20,00, 2 animals, paid R$ 800,00 →
+   status Pago, restante R$ 0,00, total R$ 800,00; pig stock 10 → 8;
+   kg/cabeça = 20, valor/cabeça = R$ 400,00.
+2. Partial corn sale: 2 sacas @ R$ 70,00, paid R$ 40,00 → status Parcial,
+   restante R$ 100,00; corn stock 20 → 18; appears in contas a receber.
+3. Credit (fiado) feed sale: 1 saca @ R$ 90,00, paid R$ 0,00 → status Fiado,
+   restante R$ 90,00; feed stock 15 → 14; appears in contas a receber.
+4. "Outros" sale: no stock effect; totals/status still correct.
+5. Overpayment attempt (paid > total) is rejected with a clear message and no
+   record is created (client validation blocks; RPC also rejects).
+6. Pork/meat sale without animals is rejected.
+7. Sale exceeding available stock is rejected and stock is unchanged.
+8. Cash balance increases only by amounts actually paid; receivables stay
+   separate; dashboard reflects revenue by type and current stock.
+
+> Note: later payments on partial/credit sales (US4) and purchases/consumption
+> (US5) are still stubs, so end-to-end receivables settlement and stock refills
+> via the app come in those phases. Sales (US3) are fully functional now.
 
 ## Final Delivery Gate
 

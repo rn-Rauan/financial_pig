@@ -8,12 +8,12 @@ interface NavItem {
   disabled?: boolean;
 }
 
-// Navigation Contract (contracts/ui-flows.md). Vendas / Estoque / Relatorios
-// arrive in later phases (US3, US5, US7); they are shown disabled for now so the
-// tab bar matches the contract without dead links or fabricated screens.
+// Navigation Contract (contracts/ui-flows.md). Estoque / Relatorios arrive in
+// later phases (US5, US7); they are shown disabled for now so the tab bar matches
+// the contract without dead links or fabricated screens.
 const ITEMS: NavItem[] = [
   { label: "Início", icon: "🏠", to: "/" },
-  { label: "Vendas", icon: "🧾", disabled: true },
+  { label: "Vendas", icon: "🧾", to: "/vendas" },
   { label: "Estoque", icon: "📦", disabled: true },
   { label: "Relatórios", icon: "📊", disabled: true },
   { label: "Perfil", icon: "👤", to: "/perfil" },

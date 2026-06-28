@@ -7,6 +7,9 @@ import { ProtectedLayout } from "@/app/ProtectedLayout";
 import { LoginPage } from "@/features/auth/LoginPage";
 import { ProfilePage } from "@/features/profile/ProfilePage";
 import { DashboardPage } from "@/features/dashboard/DashboardPage";
+import { SalesListPage } from "@/features/sales/SalesListPage";
+import { SaleFormPage } from "@/features/sales/SaleFormPage";
+import { SaleDetailPage } from "@/features/sales/SaleDetailPage";
 
 const sessionFallback = (
   <div className="flex min-h-screen items-center justify-center">
@@ -61,6 +64,9 @@ export function AppRoutes() {
         }
       >
         <Route index element={<DashboardPage />} />
+        <Route path="vendas" element={<SalesListPage />} />
+        <Route path="vendas/nova" element={<SaleFormPage />} />
+        <Route path="vendas/:id" element={<SaleDetailPage />} />
         <Route path="perfil" element={<ProfilePage />} />
       </Route>
 
