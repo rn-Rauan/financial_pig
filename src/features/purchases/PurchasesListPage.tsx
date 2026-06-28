@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { LoadingState } from "@/components/LoadingState";
 import { EmptyState } from "@/components/EmptyState";
 import { ErrorState } from "@/components/ErrorState";
+import { InactivateButton } from "@/components/InactivateButton";
 import { formatCurrency, formatDate, formatQuantity } from "@/lib/format";
 import { listPurchases, type Purchase } from "@/features/purchases/purchasesService";
 import { PURCHASE_TYPE_LABELS } from "@/features/stock/stockConstants";
@@ -71,9 +72,18 @@ export function PurchasesListPage() {
                     {UNIT_LABELS[purchase.unidade]} · {formatDate(purchase.dataCompra)}
                   </p>
                 </div>
-                <span className="font-semibold text-gray-900">
-                  {formatCurrency(purchase.valorTotal)}
-                </span>
+                <div className="flex shrink-0 flex-col items-end gap-1">
+                  <span className="font-semibold text-gray-900">
+                    {formatCurrency(purchase.valorTotal)}
+                  </span>
+                  <InactivateButton
+                    entidade="compras"
+                    registroId={purchase.id}
+                    variant="link"
+                    confirmMessage="A compra será inativada e o estoque adicionado será revertido. Se esse estoque já foi usado, a inativação é bloqueada. Continuar?"
+                    onDone={() => void load()}
+                  />
+                </div>
               </div>
             </li>
           ))}

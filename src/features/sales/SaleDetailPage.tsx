@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { LoadingState } from "@/components/LoadingState";
 import { EmptyState } from "@/components/EmptyState";
 import { ErrorState } from "@/components/ErrorState";
+import { InactivateButton } from "@/components/InactivateButton";
 import { formatCurrency, formatDate, formatNumber, formatQuantity } from "@/lib/format";
 import {
   getSale,
@@ -17,6 +18,7 @@ type Status = "loading" | "error" | "notfound" | "ready";
 
 export function SaleDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [status, setStatus] = useState<Status>("loading");
   const [sale, setSale] = useState<Sale | null>(null);
   const [movements, setMovements] = useState<SaleStockMovement[]>([]);
@@ -133,6 +135,16 @@ export function SaleDetailPage() {
               <p className="text-sm text-gray-700">{sale.observacao}</p>
             </Section>
           ) : null}
+
+          <div className="flex justify-end pt-2">
+            <InactivateButton
+              entidade="vendas"
+              registroId={sale.id}
+              label="Inativar venda"
+              confirmMessage="A venda será inativada e o estoque baixado será devolvido. Pagamentos vinculados também serão inativados. Deseja continuar?"
+              onDone={() => navigate("/vendas", { replace: true })}
+            />
+          </div>
         </>
       ) : null}
     </div>

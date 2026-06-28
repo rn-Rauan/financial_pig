@@ -2,6 +2,8 @@ import { useCallback, useEffect, useMemo, useState, type FormEvent } from "react
 import { LoadingState } from "@/components/LoadingState";
 import { EmptyState } from "@/components/EmptyState";
 import { ErrorState } from "@/components/ErrorState";
+import { InactivateButton } from "@/components/InactivateButton";
+import type { InactivatableEntity } from "@/lib/supabase/inactivationService";
 import { formatCurrency, formatDate, todayISODate } from "@/lib/format";
 import { sumMoney } from "@/lib/calculations/financial";
 import { parseDecimalInput } from "@/lib/validation";
@@ -39,6 +41,8 @@ interface ExpenseManagerProps {
   addLabel: string;
   emptyTitle: string;
   emptyDescription: string;
+  /** Entity used to soft-delete a list item via inativar_registro. */
+  inactivateEntity: InactivatableEntity;
   load: () => Promise<ExpenseEntry[]>;
   submit: (values: ExpenseSubmit) => Promise<void>;
 }
@@ -59,6 +63,7 @@ export function ExpenseManager({
   addLabel,
   emptyTitle,
   emptyDescription,
+  inactivateEntity,
   load,
   submit,
 }: ExpenseManagerProps) {
@@ -254,9 +259,17 @@ export function ExpenseManager({
                     {entry.categoriaLabel} · {formatDate(entry.data)}
                   </p>
                 </div>
-                <span className="font-semibold text-gray-900">
-                  {formatCurrency(entry.valor)}
-                </span>
+                <div className="flex shrink-0 flex-col items-end gap-1">
+                  <span className="font-semibold text-gray-900">
+                    {formatCurrency(entry.valor)}
+                  </span>
+                  <InactivateButton
+                    entidade={inactivateEntity}
+                    registroId={entry.id}
+                    variant="link"
+                    onDone={() => void loadList()}
+                  />
+                </div>
               </li>
             ))}
           </ul>

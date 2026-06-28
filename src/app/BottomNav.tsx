@@ -3,19 +3,15 @@ import { NavLink } from "react-router-dom";
 interface NavItem {
   label: string;
   icon: string;
-  to?: string;
-  /** Disabled tabs are shown for the navigation contract but not yet built. */
-  disabled?: boolean;
+  to: string;
 }
 
-// Navigation Contract (contracts/ui-flows.md). Relatorios arrives in a later
-// phase (US7); it is shown disabled for now so the tab bar matches the contract
-// without dead links or fabricated screens.
+// Navigation Contract (contracts/ui-flows.md). All tabs are now implemented.
 const ITEMS: NavItem[] = [
   { label: "Início", icon: "🏠", to: "/" },
   { label: "Vendas", icon: "🧾", to: "/vendas" },
   { label: "Estoque", icon: "📦", to: "/estoque" },
-  { label: "Relatórios", icon: "📊", disabled: true },
+  { label: "Relatórios", icon: "📊", to: "/relatorios" },
   { label: "Perfil", icon: "👤", to: "/perfil" },
 ];
 
@@ -24,32 +20,19 @@ export function BottomNav() {
     <ul className="flex items-stretch justify-around">
       {ITEMS.map((item) => (
         <li key={item.label} className="flex-1">
-          {item.disabled || !item.to ? (
-            <span
-              aria-disabled
-              title="Em breve"
-              className="flex flex-col items-center gap-0.5 py-2 text-[11px] text-gray-300"
-            >
-              <span aria-hidden className="text-lg">
-                {item.icon}
-              </span>
-              {item.label}
+          <NavLink
+            to={item.to}
+            end={item.to === "/"}
+            className={({ isActive }) =>
+              "flex flex-col items-center gap-0.5 py-2 text-[11px] " +
+              (isActive ? "text-brand" : "text-gray-500")
+            }
+          >
+            <span aria-hidden className="text-lg">
+              {item.icon}
             </span>
-          ) : (
-            <NavLink
-              to={item.to}
-              end={item.to === "/"}
-              className={({ isActive }) =>
-                "flex flex-col items-center gap-0.5 py-2 text-[11px] " +
-                (isActive ? "text-brand" : "text-gray-500")
-              }
-            >
-              <span aria-hidden className="text-lg">
-                {item.icon}
-              </span>
-              {item.label}
-            </NavLink>
-          )}
+            {item.label}
+          </NavLink>
         </li>
       ))}
     </ul>

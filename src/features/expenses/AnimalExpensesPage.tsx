@@ -34,6 +34,7 @@ export function AnimalExpensesPage() {
       addLabel="Registrar despesa"
       emptyTitle="Nenhuma despesa registrada"
       emptyDescription="Registre ração, remédio, veterinário e outros custos dos animais."
+      inactivateEntity="despesas_animais"
       load={load}
       submit={async (values) => {
         await registrarDespesaAnimal({

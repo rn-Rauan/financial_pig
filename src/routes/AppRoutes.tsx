@@ -19,6 +19,9 @@ import { StockMovementPage } from "@/features/stock/StockMovementPage";
 import { ConsumptionPage } from "@/features/stock/ConsumptionPage";
 import { AnimalExpensesPage } from "@/features/expenses/AnimalExpensesPage";
 import { FixedCostsPage } from "@/features/expenses/FixedCostsPage";
+import { MonthlySummaryPage } from "@/features/reports/MonthlySummaryPage";
+import { PigAnalysisPage } from "@/features/reports/PigAnalysisPage";
+import { HistoryPage } from "@/features/reports/HistoryPage";
 
 const sessionFallback = (
   <div className="flex min-h-screen items-center justify-center">
@@ -85,6 +88,9 @@ export function AppRoutes() {
         <Route path="estoque/consumo" element={<ConsumptionPage />} />
         <Route path="despesas" element={<AnimalExpensesPage />} />
         <Route path="gastos-fixos" element={<FixedCostsPage />} />
+        <Route path="relatorios" element={<MonthlySummaryPage />} />
+        <Route path="relatorios/porcos" element={<PigAnalysisPage />} />
+        <Route path="relatorios/historico" element={<HistoryPage />} />
         <Route path="perfil" element={<ProfilePage />} />
       </Route>
 

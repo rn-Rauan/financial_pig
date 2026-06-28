@@ -193,15 +193,15 @@ records, and history.
 **Manual Validation**: Validate all reporting screens against the quickstart
 dataset and inactive-record rules.
 
-- [ ] T079 [P] [US7] Implement monthly summary page in `src/features/reports/MonthlySummaryPage.tsx`
-- [ ] T080 [P] [US7] Implement pig analysis page in `src/features/reports/PigAnalysisPage.tsx`
-- [ ] T081 [P] [US7] Implement history page in `src/features/reports/HistoryPage.tsx`
-- [ ] T082 [US7] Implement report query wrappers in `src/features/reports/reportsService.ts`
-- [ ] T083 [US7] Implement shared report period selector in `src/features/reports/components/PeriodSelector.tsx`
-- [ ] T084 [US7] Implement cross-module search/filter UI in `src/features/reports/components/ReportFilters.tsx`
-- [ ] T085 [US7] Implement inactivation action wrapper for `inativar_registro` in `src/lib/supabase/inactivationService.ts`
-- [ ] T086 [US7] Add inactive-record handling to sales, customers, purchases, stock, expenses, and reports pages
-- [ ] T087 [US7] Wire report and history routes in `src/routes/AppRoutes.tsx`
+- [x] T079 [P] [US7] Implement monthly summary page in `src/features/reports/MonthlySummaryPage.tsx`
+- [x] T080 [P] [US7] Implement pig analysis page in `src/features/reports/PigAnalysisPage.tsx`
+- [x] T081 [P] [US7] Implement history page in `src/features/reports/HistoryPage.tsx`
+- [x] T082 [US7] Implement report query wrappers in `src/features/reports/reportsService.ts`
+- [x] T083 [US7] Implement shared report period selector in `src/features/reports/components/PeriodSelector.tsx`
+- [x] T084 [US7] Implement cross-module search/filter UI in `src/features/reports/components/ReportFilters.tsx`
+- [x] T085 [US7] Implement inactivation action wrapper for `inativar_registro` in `src/lib/supabase/inactivationService.ts`
+- [x] T086 [US7] Add inactive-record handling to sales, customers, purchases, stock, expenses, and reports pages
+- [x] T087 [US7] Wire report and history routes in `src/routes/AppRoutes.tsx`
 - [ ] T088 [US7] Manually validate monthly summary, pig analysis, history, filters, and soft delete behavior in `docs/manual-validation.md`
 
 **Checkpoint**: Reports and history match active/inactive record rules.

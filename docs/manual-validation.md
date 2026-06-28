@@ -40,6 +40,8 @@ validation:
      atomic animal-expense record + history.
   10. `010_registrar_gasto_fixo.sql` — real `registrar_gasto_fixo` RPC: atomic
       fixed/construction-cost record + history.
+  11. `011_inativar_registro.sql` — real `inativar_registro` RPC: soft delete
+      (ativo = false) with compensating stock reversal for sales/purchases.
 - Preferred migration command after `supabase login` and `supabase link`:
   `supabase db push --dry-run`, then `supabase db push`.
 - **RLS is enabled** on all business tables; each policy scopes rows to
@@ -50,12 +52,9 @@ validation:
 - Local run: `npm install` then `npm run dev`, opened at a mobile-width
   viewport. Do not add or run automated test commands.
 
-> Note: `registrar_venda` (004), `registrar_pagamento_venda` (005),
-> `registrar_compra` (006), `registrar_movimentacao_estoque` (007),
-> `registrar_consumo` (008), `registrar_despesa_animal` (009), and
-> `registrar_gasto_fixo` (010) are now implemented. Only `inativar_registro` (in
-> `002_business_rpcs.sql`) is still a stub that raises "not yet implemented"
-> until its user-story phase (US7).
+> Note: all business RPCs are now implemented (migrations 004–011). The stubs in
+> `002_business_rpcs.sql` are fully replaced via `create or replace` /
+> `inativar_registro`; no "not yet implemented" stub remains.
 
 ## Required Validation
 
@@ -208,6 +207,37 @@ Reach the screens via the dashboard shortcuts (Despesa / Gasto fixo).
 4. Validation: empty description, non-positive value, missing category, or
    invalid date are rejected with clear messages (client blocks; RPC re-validates).
 5. History records `despesa_registrada` and `gasto_fixo_registrado`.
+
+### US7 - Review Monthly Results and History (T088) — pending
+
+Open the "Relatórios" tab (Resumo / Porcos / Histórico sub-tabs).
+
+1. Monthly summary: for the selected month, the grouped totals (receitas by type,
+   compras by type, despesas animais, gastos fixos, lucro bruto/operacional/
+   líquido, saldo, contas a receber) match the dashboard and a hand calculation.
+2. Period selector changes the month and the monthly figures update.
+3. Pig analysis: shows kg, animals, kg/head, value/head, value/kg for pig sales;
+   a month with no pig sales shows the empty state (no division-by-zero errors).
+4. History: lists sales, payments, purchases, stock movements, consumption,
+   expenses, fixed costs, and inactivations, newest first.
+5. History filters (search, type, date range) narrow the list and "Limpar
+   filtros" resets them.
+6. Soft delete (inactivation):
+   - Inativar a sale (from its detail) → stock removed is returned, linked
+     payments are inactivated, the sale leaves lists/receivables, dashboard and
+     stock update, and a `venda_cancelada` event appears in history.
+   - Inativar a purchase whose stock is still available → stock is reversed and
+     the purchase leaves the list; if the purchased stock was already used, the
+     inactivation is rejected with a clear message and nothing changes.
+   - Inativar an animal expense / fixed cost → it leaves the list and the
+     dashboard/summary totals drop accordingly; a `registro_inativado` event is
+     recorded.
+   - Inactivated records never reappear in normal lists (all queries filter
+     `ativo = true`).
+
+> Note on scope: `inativar_registro` also supports `clientes`, but there is no
+> customers screen in the MVP, so customer inactivation is not surfaced in the
+> UI. Stock items are not inactivated (they are managed via movements).
 
 ## Final Delivery Gate
 

@@ -34,6 +34,7 @@ export function FixedCostsPage() {
       addLabel="Registrar gasto"
       emptyTitle="Nenhum gasto fixo registrado"
       emptyDescription="Registre construção, reforma, equipamentos e materiais."
+      inactivateEntity="gastos_fixos"
       load={load}
       submit={async (values) => {
         await registrarGastoFixo({
