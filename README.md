@@ -116,11 +116,12 @@ for that user. It is idempotent and safe to run on every login.
 6. Despesa / Gasto fixo (dashboard shortcuts): record animal expenses and
    fixed/construction costs separately.
 7. Relatórios: monthly summary, pig analysis, and a filterable history.
-8. Perfil: install the PWA and sign out.
+8. Perfil: set the initial cash ("Começou com quanto?"), install the PWA, and
+   sign out. The dashboard cash balance starts from this value.
 
 ## Deployment (Vercel or Netlify)
 
-Deployed URL: _to be added after the first deploy (task T103)._
+Deployed URL: [https://financial-pig.vercel.app/](https://financial-pig.vercel.app/)
 
 The app is a static SPA built with Vite plus an installable PWA service worker.
 
@@ -134,7 +135,7 @@ The app is a static SPA built with Vite plus an installable PWA service worker.
   - Vercel: add a rewrite of `/(.*)` to `/index.html` in `vercel.json`.
 
 After deploying, validate PWA installability on a mobile browser and record the
-final URL here (task T103).
+manual validation results in `docs/manual-validation.md`.
 
 ### PWA
 
@@ -147,16 +148,16 @@ final URL here (task T103).
 ## Manual validation status
 
 This project uses documented manual validation instead of automated tests (see
-[docs/manual-validation.md](docs/manual-validation.md)). All eight user stories
+[docs/manual-validation.md](docs/manual-validation.md)). All nine user stories
 are implemented and the app builds clean (`npm run typecheck`, `npm run build`).
 
 Pending manual validation (require a live Supabase project and/or a deploy):
 
 - Per user story: T031 (auth), T041 (dashboard), T052 (sales), T060
   (receivables), T071 (stock), T078 (costs), T088 (reports/soft delete), T095
-  (PWA on deploy).
-- Final delivery: T100 (record dataset results), T102 (full quickstart
-  checklist), T103 (deploy + record URL).
+  (PWA on deploy), T110 (initial cash).
+- Final delivery: T100 (record dataset results) and T102 (full quickstart
+  checklist). T103 is complete: the deployed URL is recorded above.
 
 ## CI
 

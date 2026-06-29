@@ -52,7 +52,8 @@ Use a fresh month and record the expected values by hand while validating.
 
 Recommended starting data:
 
-- Capital initial: R$ 1.000,00
+- Initial cash/capital: R$ 1.000,00 for validation calculations (or
+  R$ 19.400,00 for the current production starting point)
 - Stock:
   - Porcos/leitões: 10 cabeças
   - Milho: 20 sacas
@@ -101,8 +102,8 @@ Expected:
 Expected:
 
 - Revenue uses total sold values.
-- Cash balance includes only received sale money, later payments, capital, and
-  paid outgoing values.
+- Cash balance includes only received sale money, later payments, initial cash,
+  and paid outgoing values.
 - Receivables are separate from cash balance.
 - Dashboard values match hand calculation for the validation dataset.
 
@@ -175,6 +176,18 @@ Expected:
 - Installed app opens in standalone mode with Financial Pig name/icon/colors.
 - README includes deployed URL, technologies, usage instructions, and SDD links.
 
+### 10. Initial Cash
+
+Expected:
+
+- Perfil or financial settings shows the current initial cash value.
+- Saving R$ 19.400,00 persists the value.
+- Dashboard cash balance changes by exactly the difference between the previous
+  initial cash and R$ 19.400,00.
+- Saving zero is allowed.
+- Negative, empty, or non-numeric values are rejected with a clear message.
+- This flow does not create a manual cash movement or cash reconciliation entry.
+
 ## Final Delivery Checklist
 
 - [ ] Login works.
@@ -187,5 +200,6 @@ Expected:
 - [ ] Soft delete/inactivation works.
 - [ ] Dashboard and reports match manual calculations.
 - [ ] PWA installability is validated on mobile.
+- [ ] Initial cash can be configured and affects dashboard balance exactly once.
 - [ ] Deployed URL works.
 - [ ] README links to constitution, spec, plan, schema, quickstart, and tasks.

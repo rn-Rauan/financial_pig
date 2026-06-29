@@ -104,6 +104,10 @@ function mapRow(row: DashboardRow): DashboardData {
 /**
  * Fetch dashboard indicators for a given month (1-based) and year from Supabase.
  * Throws on error so the page can show a retryable error state.
+ *
+ * Always reads fresh from the `dashboard_mensal` RPC (no client cache), so cash
+ * reflects the latest `configuracoes.capital_inicial` set in Profile (US9) as
+ * soon as the dashboard is re-opened or refreshed.
  */
 export async function fetchDashboard(
   year: number,

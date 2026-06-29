@@ -23,7 +23,8 @@ shape, constraints, RLS, and RPC boundaries are defined in [schema.md](schema.md
 - Sales require type, product, quantity > 0, unit, unit price > 0, date, and paid
   amount between zero and total.
 - Pork/Meat sales require animals used > 0 and available pig stock.
-- Purchases require type, product, quantity > 0, unit, unit value > 0, and date.
+- Purchases require type, product, quantity > 0, unit, total value > 0, and date.
+- Configuration initial capital must be a non-negative monetary value.
 - Expenses and fixed costs require category, value > 0, description, and date.
 - Stock movement quantities must be positive, except adjustment may use signed
   effect internally while preserving non-negative final stock.

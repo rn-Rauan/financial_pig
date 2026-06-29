@@ -68,7 +68,7 @@ blocking, and no in-app registration.
 - [x] T028 [US1] Implement sign-in and sign-out actions in `src/features/auth/authService.ts`
 - [x] T029 [US1] Wire protected routes in `src/routes/AppRoutes.tsx`
 - [x] T030 [US1] Add profile/logout entry point in `src/features/profile/ProfilePage.tsx`
-- [x] T031 [US1] Manually validate auth scenarios and record findings in `docs/manual-validation.md`
+- [ ] T031 [US1] Manually validate auth scenarios and record findings in `docs/manual-validation.md`
 
 **Checkpoint**: Authenticated access is functional and protected.
 
@@ -91,7 +91,7 @@ manual calculations.
 - [x] T038 [US2] Implement pig performance summary in `src/features/dashboard/components/PigSummary.tsx`
 - [x] T039 [US2] Implement month selector in `src/features/dashboard/components/MonthSelector.tsx`
 - [x] T040 [US2] Add dashboard loading, empty, and error states in `src/features/dashboard/DashboardPage.tsx`
-- [x] T041 [US2] Manually validate dashboard calculations with the quickstart dataset in `docs/manual-validation.md`
+- [ ] T041 [US2] Manually validate dashboard calculations with the quickstart dataset in `docs/manual-validation.md`
 
 **Checkpoint**: Dashboard reflects the selected month and core business rules.
 
@@ -115,7 +115,7 @@ verify totals, status, receivables, cash, and stock.
 - [x] T049 [US3] Implement customer picker/name fallback in `src/features/sales/components/CustomerSaleField.tsx`
 - [x] T050 [US3] Implement sale detail financial and stock effect summary in `src/features/sales/SaleDetailPage.tsx`
 - [x] T051 [US3] Wire sales routes in `src/routes/AppRoutes.tsx`
-- [x] T052 [US3] Manually validate paid, partial, credit, pork/meat, corn, feed, and overpayment scenarios in `docs/manual-validation.md`
+- [ ] T052 [US3] Manually validate paid, partial, credit, pork/meat, corn, feed, and overpayment scenarios in `docs/manual-validation.md`
 
 **Checkpoint**: Main sales flow is functional and manually validated.
 
@@ -135,7 +135,7 @@ verify remaining amount, status, history, and cash balance.
 - [x] T057 [US4] Implement payment validation in `src/features/receivables/paymentValidation.ts`
 - [x] T058 [US4] Implement receivables filters by customer/name/date/status/type in `src/features/receivables/components/ReceivablesFilters.tsx`
 - [x] T059 [US4] Wire receivables and payment routes in `src/routes/AppRoutes.tsx`
-- [x] T060 [US4] Manually validate partial payment, full payment, overpayment rejection, and no-customer receivable scenarios in `docs/manual-validation.md`
+- [ ] T060 [US4] Manually validate partial payment, full payment, overpayment rejection, and no-customer receivable scenarios in `docs/manual-validation.md`
 
 **Checkpoint**: Receivables are separate from cash and payments are safe.
 
@@ -159,7 +159,7 @@ attempts.
 - [x] T068 [US5] Implement consumption mutation wrapper for `registrar_consumo` in `src/features/stock/consumptionService.ts`
 - [x] T069 [US5] Implement stock and consumption validation messages in `src/features/stock/stockValidation.ts`
 - [x] T070 [US5] Wire purchase, stock, movement, and consumption routes in `src/routes/AppRoutes.tsx`
-- [x] T071 [US5] Manually validate purchases, stock entries/exits/losses/adjustments, consumption, and negative-stock blocking in `docs/manual-validation.md`
+- [ ] T071 [US5] Manually validate purchases, stock entries/exits/losses/adjustments, consumption, and negative-stock blocking in `docs/manual-validation.md`
 
 **Checkpoint**: Stock remains correct and never negative.
 
@@ -179,7 +179,7 @@ monthly summary separation.
 - [x] T075 [US6] Implement fixed cost service in `src/features/expenses/fixedCostsService.ts`
 - [x] T076 [US6] Implement expense/fixed-cost validation in `src/features/expenses/expenseValidation.ts`
 - [x] T077 [US6] Wire expense routes and dashboard shortcuts in `src/routes/AppRoutes.tsx`
-- [x] T078 [US6] Manually validate animal expense and fixed/construction cost separation in `docs/manual-validation.md`
+- [ ] T078 [US6] Manually validate animal expense and fixed/construction cost separation in `docs/manual-validation.md`
 
 **Checkpoint**: Operating costs and structural costs are separated.
 
@@ -202,7 +202,7 @@ dataset and inactive-record rules.
 - [x] T085 [US7] Implement inactivation action wrapper for `inativar_registro` in `src/lib/supabase/inactivationService.ts`
 - [x] T086 [US7] Add inactive-record handling to sales, customers, purchases, stock, expenses, and reports pages
 - [x] T087 [US7] Wire report and history routes in `src/routes/AppRoutes.tsx`
-- [x] T088 [US7] Manually validate monthly summary, pig analysis, history, filters, and soft delete behavior in `docs/manual-validation.md`
+- [ ] T088 [US7] Manually validate monthly summary, pig analysis, history, filters, and soft delete behavior in `docs/manual-validation.md`
 
 **Checkpoint**: Reports and history match active/inactive record rules.
 
@@ -220,7 +220,7 @@ dataset and inactive-record rules.
 - [x] T092 [US8] Add install prompt/status UI in `src/features/profile/ProfilePage.tsx`
 - [x] T093 [US8] Review mobile layout, touch targets, and text fit across `src/features/`
 - [x] T094 [US8] Configure deployment environment instructions in `README.md`
-- [x] T095 [US8] Manually validate PWA installability and deployed mobile behavior in `docs/manual-validation.md`
+- [ ] T095 [US8] Manually validate PWA installability and deployed mobile behavior in `docs/manual-validation.md`
 
 **Checkpoint**: Deployed PWA works on mobile and is ready for delivery.
 
@@ -237,7 +237,29 @@ dataset and inactive-record rules.
 - [ ] T100 Update `docs/manual-validation.md` with final validation dataset results
 - [x] T101 Update `README.md` with deployed URL, usage instructions, SDD links, and known manual validation status
 - [ ] T102 Run the full manual validation checklist from `specs/001-mvp-financial-pig/quickstart.md`
-- [ ] T103 Deploy to Vercel or Netlify and record the final URL in `README.md`
+- [x] T103 Deploy to Vercel or Netlify and record the final URL in `README.md`
+
+---
+
+## Phase 12: User Story 9 - Configure Initial Cash (Priority: P1 Enhancement)
+
+**Goal**: The user can set "Começou com quanto?" so dashboard cash balance starts
+from the real initial cash/capital amount.
+
+**Manual Validation**: Set the initial cash to a known value (for example
+R$ 19.400,00), verify the dashboard balance changes by exactly the expected
+difference, and confirm invalid values are rejected.
+
+- [x] T104 [P] [US9] Add `atualizar_capital_inicial` RPC migration in `supabase/migrations/014_atualizar_capital_inicial.sql`
+- [x] T105 [P] [US9] Implement configuration query/update wrappers in `src/features/profile/profileService.ts`
+- [x] T106 [US9] Add initial cash field and current-value loading to `src/features/profile/ProfilePage.tsx`
+- [x] T107 [US9] Add decimal comma/dot validation, save state, success state, and error state for initial cash in `src/features/profile/ProfilePage.tsx`
+- [x] T108 [US9] Ensure dashboard reflects the updated initial cash after returning/refreshing in `src/features/dashboard/dashboardService.ts`
+- [x] T109 [P] [US9] Update usage/deployment documentation for initial cash in `README.md` and `docs/manual-validation.md`
+- [ ] T110 [US9] Manually validate initial cash scenarios and record findings in `docs/manual-validation.md`
+
+**Scope Boundary**: Do not implement physical cash count, cash reconciliation, or
+manual cash adjustments in this phase.
 
 ---
 
@@ -255,6 +277,7 @@ dataset and inactive-record rules.
 - **US6 Expenses/Fixed Costs (Phase 8)**: Depends on foundational work
 - **US7 Reports/History (Phase 9)**: Depends on US3-US6
 - **US8 PWA (Phase 10)**: Depends on app shell and can finish after core flows
+- **US9 Initial Cash (Phase 12)**: Depends on US1 auth, US2 dashboard, and existing `configuracoes`
 - **Polish (Phase 11)**: Depends on all desired user stories
 
 ### Suggested MVP Path
@@ -264,6 +287,8 @@ dataset and inactive-record rules.
 3. Complete US4 receivables.
 4. Complete US2 dashboard with real data.
 5. Complete US6, US7, US8, then final polish.
+6. Add US9 initial cash as a focused production enhancement before broader cash
+   reconciliation features.
 
 ### Parallel Opportunities
 
@@ -272,6 +297,8 @@ dataset and inactive-record rules.
 - UI page shells in each story can run in parallel with service wrappers when file paths differ.
 - Reports pages T079-T081 can run in parallel.
 - PWA asset and manifest work T089-T090 can run in parallel.
+- Initial cash migration T104 and profile service T105 can run in parallel before
+  wiring the Profile UI.
 
 ## Implementation Strategy
 
@@ -292,7 +319,7 @@ Every checkpoint is complete only after its manual validation task is recorded i
 
 ## Task Count
 
-- Total tasks: 103
+- Total tasks: 110
 - US1: 6 tasks
 - US2: 10 tasks
 - US3: 11 tasks
@@ -301,3 +328,4 @@ Every checkpoint is complete only after its manual validation task is recorded i
 - US6: 7 tasks
 - US7: 10 tasks
 - US8: 7 tasks
+- US9: 7 tasks

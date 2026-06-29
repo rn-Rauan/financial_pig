@@ -219,6 +219,35 @@ browser install option, launch from the installed icon, and validate core flows.
 
 ---
 
+### User Story 9 - Configure Initial Cash (Priority: P1 Enhancement)
+
+As the user, I want to set the initial cash amount ("Começou com quanto?") so
+that the dashboard balance starts from the real amount used to begin the
+business tracking.
+
+**Why this priority**: The dashboard already depends on initial capital for the
+cash balance; giving the user a safe UI for this value avoids manual SQL edits
+and keeps the MVP usable in production.
+
+**Manual Validation**: Set the initial cash to a known value, reopen the
+dashboard, and verify that the current cash balance includes that value exactly
+once.
+
+**Acceptance Scenarios**:
+
+1. **Given** the user is authenticated, **When** they open Perfil/financial
+   settings, **Then** the current initial cash value is shown.
+2. **Given** the user enters a non-negative initial cash value, **When** they
+   save, **Then** the value is persisted and the dashboard balance uses the new
+   starting amount.
+3. **Given** the user enters a negative, empty, or invalid value, **When** they
+   try to save, **Then** the system blocks the update and shows a clear message.
+
+**Scope Boundary**: This story is only for initial cash/capital. Physical cash
+counting, cash reconciliation, and manual cash adjustments are future features.
+
+---
+
 ### Edge Cases
 
 - Sale paid amount greater than total must be blocked.
@@ -234,6 +263,8 @@ browser install option, launch from the installed icon, and validate core flows.
 - Empty months or periods must show zero values or clear empty-state messages.
 - Invalid dates, negative values, and zero quantities must be blocked where the
   business rule requires positive values.
+- Initial cash must allow zero, reject negative values, and avoid double-counting
+  when saved more than once.
 
 ## Requirements *(mandatory)*
 
@@ -301,6 +332,12 @@ browser install option, launch from the installed icon, and validate core flows.
   a phone PWA.
 - **FR-036**: The system MUST provide clear validation and error messages for
   invalid quantities, values, dates, credentials, and stock/payment constraints.
+- **FR-037**: The system MUST allow the authenticated user to view the current
+  initial cash value.
+- **FR-038**: The system MUST allow the authenticated user to update initial cash
+  to a non-negative monetary value.
+- **FR-039**: The system MUST include initial cash exactly once in dashboard cash
+  balance calculations.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -349,6 +386,9 @@ browser install option, launch from the installed icon, and validate core flows.
   dashboard flows.
 - **SC-008**: Normal list screens hide 100% of inactive records while history or
   reporting can still account for them where relevant.
+- **SC-009**: The user can update initial cash in under 1 minute and verify on
+  the dashboard that the cash balance changes by exactly the difference between
+  old and new initial cash values.
 
 ## Assumptions
 
@@ -361,3 +401,5 @@ browser install option, launch from the installed icon, and validate core flows.
 - Google Play publication is out of scope for the MVP.
 - PDF export, Excel export, detailed animal lifecycle control, supplier
   management, and advanced finance modules are future enhancements.
+- Physical cash reconciliation and manual cash adjustments are out of scope for
+  the initial cash improvement.

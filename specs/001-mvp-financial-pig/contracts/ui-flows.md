@@ -67,12 +67,13 @@ unit price, paid amount, date, observation, animals used for Pork/Meat
 
 ## Purchase and Stock Flow
 
-**Input**: purchase type, product, quantity, unit, unit value, supplier, date,
-observation
+**Input**: purchase type, product, quantity, unit, total paid value, supplier,
+date, observation
 
 **Success output**:
 
 - purchase saved
+- average unit value calculated from total paid value and quantity
 - stock increased for pigs/corn/feed purchases
 - cash balance decreased
 - history entry created
@@ -94,6 +95,25 @@ observation
 **Failure output**:
 
 - clear message for missing category, invalid value, or invalid date
+
+## Initial Cash Configuration Flow
+
+**Input**: non-negative initial cash value ("Começou com quanto?")
+
+**Success output**:
+
+- initial cash value saved for the authenticated user
+- dashboard cash balance includes the saved value exactly once
+- success state confirms the value was saved
+
+**Failure output**:
+
+- clear message for missing, invalid, or negative values
+
+**Scope boundary**:
+
+- this flow is not a cash-count/reconciliation tool and must not create manual
+  cash movements
 
 ## Reporting Flow
 

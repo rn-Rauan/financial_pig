@@ -340,6 +340,19 @@ Atomically soft-deletes a supported record and applies compensating effects when
 needed. Sales with stock or payment effects require special handling to avoid
 incorrect dashboard/stock totals.
 
+### atualizar_capital_inicial
+
+Atomically:
+
+1. Require an authenticated user.
+2. Validate `capital_inicial >= 0`.
+3. Insert or update the authenticated user's `configuracoes` row.
+4. Preserve existing configuration fields such as app name, currency, and active
+   state where already present.
+
+This RPC only changes the starting cash amount used by dashboard calculations.
+It must not create a manual cash adjustment or override movement-derived cash.
+
 ## RLS Policy Pattern
 
 Enable RLS on every business table.

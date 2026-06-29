@@ -47,6 +47,11 @@ validation:
       items. The app calls it automatically after login.
   13. `013_compras_valor_total.sql` — updates purchases so the user enters the
       total paid and the RPC stores `valor_unitario` as the calculated average.
+  14. `014_atualizar_capital_inicial.sql` — `atualizar_capital_inicial` RPC:
+      sets the user's initial cash/capital (upsert on `configuracoes`).
+  15. `015_corrigir_validacao_capital_inicial.sql` — tightens
+      `atualizar_capital_inicial` so negative values are rejected before
+      rounding.
 - Preferred migration command after `supabase login` and `supabase link`:
   `supabase db push --dry-run`, then `supabase db push`.
 - **RLS is enabled** on all business tables; each policy scopes rows to
@@ -58,7 +63,7 @@ validation:
 - Local run: `npm install` then `npm run dev`, opened at a mobile-width
   viewport. Do not add or run automated test commands.
 
-> Note: all business RPCs are now implemented (migrations 004–013). The stubs in
+> Note: all business RPCs are now implemented (migrations 004–015). The stubs in
 > `002_business_rpcs.sql` are fully replaced by later migrations; no
 > "not yet implemented" stub remains active.
 
@@ -74,6 +79,8 @@ validation:
 ## Financial Rules
 
 - Cash balance changes only when money is actually received or paid.
+- Initial cash is the starting amount for the cash balance and is counted exactly
+  once.
 - Credit sales and partially paid sales keep remaining amounts in receivables.
 - Revenue reflects the total sold value, not only the amount paid.
 - Payments reduce receivables and update cash balance only by the paid amount.
@@ -100,9 +107,9 @@ For each user story, record:
 
 ## Pending Validation by User Story
 
-These scenarios are implemented and build-clean, but still require a live
-Supabase project + the manually-created user to be validated (tasks T031, T041).
-Record results here when executed.
+These scenarios are implemented and build-clean, but still require validation in
+the live Supabase/Vercel environment with the manually-created user. Record
+results here when executed.
 
 ### US1 - Secure Mobile Access (T031) — pending
 
@@ -256,6 +263,22 @@ Validate on the deployed URL (HTTPS) and a mobile browser (Android Chrome).
 5. Mobile layout: forms fit a phone width, inputs do not trigger iOS zoom (16px),
    and the bottom navigation (5 tabs) is reachable with the thumb.
 6. README documents the deployed URL, env vars, build, and SPA rewrite.
+
+### US9 - Configure Initial Cash (T110) — pending
+
+Open "Perfil" (or the financial settings entry created for this story).
+
+1. Existing value: the screen loads the current `capital_inicial` value from
+   `configuracoes`; first-time users see R$ 0,00 unless already configured.
+2. Set initial cash to R$ 19.400,00 → save succeeds and a success state appears.
+3. Dashboard balance changes by exactly the difference between the previous
+   initial cash and R$ 19.400,00; it must not double-count on refresh/relogin.
+4. Set initial cash to R$ 0,00 → save succeeds and dashboard removes the
+   previous starting amount.
+5. Negative, empty, letter-only, or malformed values are rejected with clear
+   messages; the previous value remains unchanged.
+6. This flow only updates starting cash. It does not create a cash reconciliation
+   entry or manual cash movement.
 
 ## Final Delivery Gate
 
