@@ -135,8 +135,8 @@ Purchases of pigs, corn, feed, or other items.
 | produto | text | not null |
 | quantidade | numeric(12,3) | not null, > 0 |
 | unidade | stock_unit | not null |
-| valor_unitario | numeric(12,2) | not null, > 0 |
-| valor_total | numeric(12,2) | not null |
+| valor_unitario | numeric(12,2) | not null, > 0, calculated average |
+| valor_total | numeric(12,2) | not null, > 0, entered total paid |
 | fornecedor | text | nullable |
 | data_compra | date | not null |
 | observacao | text | nullable |
@@ -313,7 +313,7 @@ Atomically:
 Atomically:
 
 1. Validate purchase input.
-2. Insert purchase with calculated total.
+2. Insert purchase with the entered total and calculated average unit value.
 3. Increase stock for pigs/corn/feed purchase types.
 4. Insert stock movement when stock is affected.
 5. Insert history entry.

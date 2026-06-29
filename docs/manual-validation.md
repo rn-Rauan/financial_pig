@@ -45,6 +45,8 @@ validation:
   12. `012_inicializar_dados.sql` — idempotent per-user setup RPC
       (`inicializar_dados`): creates the settings row and seeds default stock
       items. The app calls it automatically after login.
+  13. `013_compras_valor_total.sql` — updates purchases so the user enters the
+      total paid and the RPC stores `valor_unitario` as the calculated average.
 - Preferred migration command after `supabase login` and `supabase link`:
   `supabase db push --dry-run`, then `supabase db push`.
 - **RLS is enabled** on all business tables; each policy scopes rows to
@@ -56,9 +58,9 @@ validation:
 - Local run: `npm install` then `npm run dev`, opened at a mobile-width
   viewport. Do not add or run automated test commands.
 
-> Note: all business RPCs are now implemented (migrations 004–011). The stubs in
-> `002_business_rpcs.sql` are fully replaced via `create or replace` /
-> `inativar_registro`; no "not yet implemented" stub remains.
+> Note: all business RPCs are now implemented (migrations 004–013). The stubs in
+> `002_business_rpcs.sql` are fully replaced by later migrations; no
+> "not yet implemented" stub remains active.
 
 ## Required Validation
 
@@ -143,9 +145,6 @@ receivables, cash, and stock.
 8. Cash balance increases only by amounts actually paid; receivables stay
    separate; dashboard reflects revenue by type and current stock.
 
-> Note: purchases/consumption (US5) are still stubs, so stock refills via the app
-> come in that phase. Sales (US3) and later payments (US4) are functional now.
-
 ### US4 - Manage Credit Sales and Later Payments (T060) — pending
 
 Builds on the US3 receivables (the partial corn sale, restante R$ 100,00, and the
@@ -172,11 +171,11 @@ credit feed sale, restante R$ 90,00). Open "Vendas → Contas a receber".
 
 Open "Estoque" (tab) and use the actions (Nova compra, Movimentar, Consumo).
 
-1. Purchase pigs: 3 cabeças @ R$ 150,00 → purchase saved, total R$ 450,00, pig
-   stock increases by 3, cash balance decreases by R$ 450,00, history shows
-   `compra_registrada`.
-2. Purchase feed: 5 sacas @ R$ 80,00 → feed stock increases by 5, cash decreases
-   by R$ 400,00.
+1. Purchase pigs: 3 cabeças, total R$ 1000,00 → purchase saved, average shows
+   R$ 333,33/cabeça, pig stock increases by 3, cash balance decreases by
+   R$ 1000,00, history shows `compra_registrada`.
+2. Purchase feed: 5 sacas, total R$ 400,00 → average shows R$ 80,00/saca, feed
+   stock increases by 5, cash decreases by R$ 400,00.
 3. "Outros" purchase: saved with no stock effect; cash still decreases.
 4. Stock entrada/saida/perda: each changes the item quantity by the delta and
    records a movement; saida/perda beyond available stock is rejected
@@ -189,10 +188,6 @@ Open "Estoque" (tab) and use the actions (Nova compra, Movimentar, Consumo).
 7. Negative-stock blocking: any operation that would drive stock below zero is
    rejected and leaves the previous quantity intact.
 8. Dashboard stock cards and "Estoque atual" reflect the resulting quantities.
-
-> Note: only `inativar_registro` (soft delete with compensation, US7) remains a
-> stub. Sales, payments, purchases, stock movements, and consumption are all
-> functional now.
 
 ### US6 - Register Costs and Separate Construction (T078) — pending
 

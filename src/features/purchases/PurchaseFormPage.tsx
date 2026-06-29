@@ -8,7 +8,7 @@ import {
   validateDate,
   parseDecimalInput,
 } from "@/lib/validation";
-import { calcSaleTotal } from "@/lib/calculations/financial";
+import { roundMoney } from "@/lib/calculations/financial";
 import {
   registrarCompra,
   type PurchaseType,
@@ -26,7 +26,7 @@ interface FormValues {
   produto: string;
   quantidade: string;
   unidade: StockUnit;
-  valorUnitario: string;
+  valorTotal: string;
   fornecedor: string;
   dataCompra: string;
   observacao: string;
@@ -39,7 +39,7 @@ const INITIAL: FormValues = {
   produto: "",
   quantidade: "",
   unidade: DEFAULT_PURCHASE_UNIT_BY_TYPE.porcos_leitoes,
-  valorUnitario: "",
+  valorTotal: "",
   fornecedor: "",
   dataCompra: todayISODate(),
   observacao: "",
@@ -57,11 +57,11 @@ function validate(values: FormValues): FormErrors {
     "Quantidade",
   );
   if (qtdError) errors.quantidade = qtdError;
-  const precoError = validatePositiveMoney(
-    parseDecimalInput(values.valorUnitario),
-    "Valor unitário",
+  const totalError = validatePositiveMoney(
+    parseDecimalInput(values.valorTotal),
+    "Valor total",
   );
-  if (precoError) errors.valorUnitario = precoError;
+  if (totalError) errors.valorTotal = totalError;
   const dateError = validateDate(values.dataCompra, "Data da compra");
   if (dateError) errors.dataCompra = dateError;
   return errors;
@@ -76,11 +76,11 @@ export function PurchaseFormPage() {
 
   const errors = useMemo(() => validate(values), [values]);
 
-  const total = useMemo(() => {
+  const mediaUnitaria = useMemo(() => {
     const q = parseDecimalInput(values.quantidade) ?? 0;
-    const p = parseDecimalInput(values.valorUnitario) ?? 0;
-    return calcSaleTotal(q, p);
-  }, [values.quantidade, values.valorUnitario]);
+    const total = parseDecimalInput(values.valorTotal) ?? 0;
+    return q > 0 && total > 0 ? roundMoney(total / q) : 0;
+  }, [values.quantidade, values.valorTotal]);
 
   function update<K extends keyof FormValues>(key: K, value: FormValues[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -107,7 +107,7 @@ export function PurchaseFormPage() {
         produto: values.produto.trim(),
         quantidade: parseDecimalInput(values.quantidade) ?? 0,
         unidade: values.unidade,
-        valorUnitario: parseDecimalInput(values.valorUnitario) ?? 0,
+        valorTotal: parseDecimalInput(values.valorTotal) ?? 0,
         dataCompra: values.dataCompra,
         fornecedor: values.fornecedor.trim() || null,
         observacao: values.observacao.trim() || null,
@@ -192,16 +192,16 @@ export function PurchaseFormPage() {
 
         <label className="flex flex-col gap-1">
           <span className="text-sm font-medium text-gray-700">
-            Valor unitário (R$)
+            Valor total da compra (R$)
           </span>
           <input
             type="text"
             inputMode="decimal"
-            value={values.valorUnitario}
-            onChange={(e) => update("valorUnitario", e.target.value)}
+            value={values.valorTotal}
+            onChange={(e) => update("valorTotal", e.target.value)}
             className={inputClass}
           />
-          {showError("valorUnitario")}
+          {showError("valorTotal")}
         </label>
 
         <label className="flex flex-col gap-1">
@@ -240,9 +240,11 @@ export function PurchaseFormPage() {
         </label>
 
         <div className="flex items-center justify-between rounded-xl bg-gray-50 p-3">
-          <span className="text-sm text-gray-500">Total</span>
+          <span className="text-sm text-gray-500">
+            Média por {UNIT_LABELS[values.unidade].toLowerCase()}
+          </span>
           <span className="text-base font-semibold text-gray-900">
-            {formatCurrency(total)}
+            {formatCurrency(mediaUnitaria)}
           </span>
         </div>
 

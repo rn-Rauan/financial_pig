@@ -267,8 +267,8 @@ browser install option, launch from the installed icon, and validate core flows.
   Pork/Meat sales.
 - **FR-017**: The system MUST allow purchase registration for pigs, corn, feed,
   and other items.
-- **FR-018**: The system MUST calculate purchase total as quantity multiplied by
-  unit value.
+- **FR-018**: The system MUST allow the user to enter the total paid for a
+  purchase and calculate the average unit value as total divided by quantity.
 - **FR-019**: The system MUST decrease cash balance by paid purchases.
 - **FR-020**: The system MUST increase stock for purchases of pigs, corn, or feed.
 - **FR-021**: The system MUST allow stock items and stock movements for Entry,
@@ -313,8 +313,9 @@ browser install option, launch from the installed icon, and validate core flows.
   active flag.
 - **Sale Payment**: Later payment linked to a sale, with value, date,
   observation, active flag, and effect on cash balance.
-- **Purchase**: Purchase record with type, product, quantity, unit, unit value,
-  total, supplier, date, observation, and active flag.
+- **Purchase**: Purchase record with type, product, quantity, unit, total paid
+  value, calculated average unit value, supplier, date, observation, and active
+  flag.
 - **Animal Expense**: Monthly animal-related cost such as feed, corn, medicine,
   veterinary, transport, labor, maintenance, or other.
 - **Fixed/Construction Cost**: Structural or fixed cost such as construction,

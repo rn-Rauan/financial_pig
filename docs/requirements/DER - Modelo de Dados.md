@@ -621,6 +621,15 @@ status_pagamento:
 - Fiado, se valor_pago = 0
 ```
 
+## Em COMPRAS
+
+```text
+valor_unitario = valor_total ÷ quantidade
+```
+
+`valor_unitario` representa a média unitária da compra/lote. O valor total é
+informado pelo usuário.
+
 ## Em vendas de Porco/Carne
 
 ```text

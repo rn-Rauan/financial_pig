@@ -73,9 +73,11 @@ Recommended operations:
 4. Later payment on corn sale:
    - R$ 100,00
 5. Purchase pigs:
-   - 3 heads at R$ 150,00
+   - 3 heads, R$ 1000,00 total
+   - average shown: R$ 333,33/head
 6. Purchase feed:
-   - 5 sacks at R$ 80,00
+   - 5 sacks, R$ 400,00 total
+   - average shown: R$ 80,00/sack
 7. Consumption:
    - 1 sack of corn
 8. Animal expense:

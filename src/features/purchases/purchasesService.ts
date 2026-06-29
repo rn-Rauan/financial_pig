@@ -26,7 +26,8 @@ export interface RegistrarCompraInput {
   produto: string;
   quantidade: number;
   unidade: StockUnit;
-  valorUnitario: number;
+  /** Total paid for the purchase/lote. The RPC stores unit value as an average. */
+  valorTotal: number;
   dataCompra: string; // YYYY-MM-DD
   fornecedor: string | null;
   observacao: string | null;
@@ -86,7 +87,7 @@ export async function listPurchases(): Promise<Purchase[]> {
 
 /**
  * Register a purchase through the atomic `registrar_compra` RPC. The database
- * computes the total and increases stock for pig/corn/feed purchases.
+ * stores the provided total and computes the average unit cost for display.
  */
 export async function registrarCompra(input: RegistrarCompraInput): Promise<string> {
   const { data, error } = await supabase.rpc("registrar_compra", {
@@ -94,7 +95,7 @@ export async function registrarCompra(input: RegistrarCompraInput): Promise<stri
     p_produto: input.produto,
     p_quantidade: input.quantidade,
     p_unidade: input.unidade,
-    p_valor_unitario: input.valorUnitario,
+    p_valor_total: input.valorTotal,
     p_data_compra: input.dataCompra,
     p_fornecedor: input.fornecedor,
     p_observacao: input.observacao,

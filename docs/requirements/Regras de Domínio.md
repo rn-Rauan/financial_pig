@@ -298,25 +298,27 @@ Toda compra deve possuir quantidade maior que zero.
 
 ---
 
-### RD26 - Compra deve possuir valor unitário maior que zero
+### RD26 - Compra deve possuir valor total maior que zero
 
-Toda compra deve possuir valor unitário maior que zero.
+Toda compra deve possuir valor total maior que zero.
 
 ---
 
-### RD27 - Valor total da compra é automático
+### RD27 - Valor médio unitário da compra é automático
 
-O valor total da compra deve ser calculado automaticamente.
+O valor médio unitário da compra deve ser calculado automaticamente a partir do
+valor total informado.
 
 ```text
-valorTotalCompra = quantidade × valorUnitario
+valorMedioUnitarioCompra = valorTotalCompra ÷ quantidade
 ```
 
 ---
 
-### RD28 - Valor total da compra não pode ser editado manualmente
+### RD28 - Valor total da compra é informado manualmente
 
-Não é permitido editar manualmente o valor total da compra.
+O valor total da compra deve ser informado manualmente, pois compras em lote
+podem ter animais ou itens com valores individuais diferentes.
 
 ---
 

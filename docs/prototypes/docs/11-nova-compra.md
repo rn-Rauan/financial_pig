@@ -11,8 +11,8 @@ Registrar uma compra: aumenta o estoque do item e reduz o saldo pelo valor total
 | Tipo | Porcos/leitões, Milho, Ração, Outros | ✅ | RD24 |
 | Quantidade | número | ✅ | > 0 (RD25) |
 | Unidade | Cabeça, Saca, Kg, Unidade | ✅ | conforme tipo |
-| Valor unitário | número | ✅ | > 0 (RD26) |
-| Valor total | calculado (readonly) | — | qtd × valor unit. (RD27, RD28) |
+| Valor total | número | ✅ | > 0 (RD26, RD28) |
+| Média unitária | calculado (readonly) | — | valor total ÷ quantidade (RD27) |
 | Fornecedor | texto | ❌ | |
 | Data | data | ✅ | RD80 |
 | Observação | texto | ❌ | RD83 |
@@ -26,7 +26,7 @@ Registrar uma compra: aumenta o estoque do item e reduz o saldo pelo valor total
 - **Carregando:** ao salvar.
 - **Vazio:** formulário inicial.
 - **Erro:** por campo ("Informe a quantidade", "Valor inválido").
-- **Com dados:** valor total calculado em tempo real.
+- **Com dados:** média unitária calculada em tempo real.
 
 ## Navegação
 - Salvar → Compras (10) ou Estoque (12).
@@ -36,5 +36,5 @@ Registrar uma compra: aumenta o estoque do item e reduz o saldo pelo valor total
 - **Transação/RPC** compra + entrada de estoque atomicamente.
 
 ## Notas de implementação (PWA / React)
-- Valor total bloqueado (não editável).
+- Valor total editável; média unitária bloqueada (calculada).
 - A entrada de leitões no rebanho vem **da compra** (não confundir com Gasto fixo).

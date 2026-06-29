@@ -18,7 +18,7 @@ PWA mobile-first de suinocultura (porcos/carne, milho, ração). Backend Supabas
 8. **Só o valor pago entra no saldo**; o restante vai para **Contas a receber** (separado do saldo).
 
 ### Compras
-9. Tipos: **Porcos/leitões, Milho, Ração, Outros**; valor total = qtd × valor unitário (automático).
+9. Tipos: **Porcos/leitões, Milho, Ração, Outros**; valor total informado manualmente e valor médio unitário calculado automaticamente.
 10. Compra **aumenta o estoque** do item e **reduz o saldo** pelo valor total; valores separados por tipo.
 
 ### Estoque & consumo

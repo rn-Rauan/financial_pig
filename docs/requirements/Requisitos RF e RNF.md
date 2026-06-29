@@ -269,9 +269,9 @@ Campos:
     
 - Unidade
     
-- Valor unitário
-    
 - Valor total
+
+- Média unitária calculada
     
 - Fornecedor
     

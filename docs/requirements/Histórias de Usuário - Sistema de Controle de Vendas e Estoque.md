@@ -372,9 +372,9 @@ O sistema deve permitir registrar compra com:
     
 - Unidade
     
-- Valor unitário
-    
 - Valor total
+
+- Média unitária calculada
     
 - Fornecedor
     

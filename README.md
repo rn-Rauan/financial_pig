@@ -111,7 +111,7 @@ for that user. It is idempotent and safe to run on every login.
 4. Vendas: register paid/partial/credit sales (stock and receivables update
    automatically); open a sale to see its effects or inactivate it. "Contas a
    receber" lists open sales and registers later payments.
-5. Estoque: view stock, register purchases, manual movements
+5. Estoque: view stock, register purchases by total paid value, manual movements
    (entrada/saída/perda/ajuste), and corn/feed consumption.
 6. Despesa / Gasto fixo (dashboard shortcuts): record animal expenses and
    fixed/construction costs separately.

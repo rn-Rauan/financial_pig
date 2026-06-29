@@ -69,7 +69,9 @@ export function PurchasesListPage() {
                   <p className="truncate text-xs text-gray-500">
                     {PURCHASE_TYPE_LABELS[purchase.tipoCompra]} ·{" "}
                     {formatQuantity(purchase.quantidade)}{" "}
-                    {UNIT_LABELS[purchase.unidade]} · {formatDate(purchase.dataCompra)}
+                    {UNIT_LABELS[purchase.unidade]} · média{" "}
+                    {formatCurrency(purchase.valorUnitario)} ·{" "}
+                    {formatDate(purchase.dataCompra)}
                   </p>
                 </div>
                 <div className="flex shrink-0 flex-col items-end gap-1">
