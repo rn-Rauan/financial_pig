@@ -34,14 +34,11 @@ export async function signOut(): Promise<void> {
 /**
  * Ensure the authenticated user's baseline data exists (settings row + default
  * stock items) by calling the idempotent `inicializar_dados` RPC. Safe to call on
- * every login; failures are swallowed so they never block app access.
+ * every login. The caller decides whether a failure should block the UI.
  */
 export async function ensureUserData(): Promise<void> {
-  try {
-    await supabase.rpc("inicializar_dados");
-  } catch {
-    // Non-blocking: the user can still use the app; seeding retries next login.
-  }
+  const { error } = await supabase.rpc("inicializar_dados");
+  if (error) throw new Error(error.message);
 }
 
 /** Read the current session once (used to bootstrap auth state). */

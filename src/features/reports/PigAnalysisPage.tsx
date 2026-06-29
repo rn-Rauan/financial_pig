@@ -43,6 +43,11 @@ export function PigAnalysisPage() {
     data.totalAnimaisUtilizados === 0 &&
     data.totalKgPorcoCarne === 0 &&
     data.receitaPorcoCarne === 0;
+  const resultadoPorcos = data ? data.receitaPorcoCarne - data.comprasPorcos : 0;
+  const receitaSobreCompra =
+    data && data.comprasPorcos > 0
+      ? data.receitaPorcoCarne / data.comprasPorcos
+      : null;
 
   return (
     <div className="flex flex-col gap-4">
@@ -69,6 +74,16 @@ export function PigAnalysisPage() {
         ) : (
           <section className="flex flex-col gap-2 rounded-xl bg-white p-4 shadow-sm">
             <Row label="Receita porco / carne" value={formatCurrency(data.receitaPorcoCarne)} strong />
+            <Row label="Compra de porcos / leitÃµes" value={formatCurrency(data.comprasPorcos)} />
+            <Row
+              label="Receita - compra de porcos"
+              value={formatCurrency(resultadoPorcos)}
+              strong
+            />
+            <Row
+              label="Receita / custo de compra"
+              value={orDash(receitaSobreCompra, (n) => `${formatNumber(n)}x`)}
+            />
             <Row label="Kg vendidos" value={`${formatNumber(data.totalKgPorcoCarne)} kg`} />
             <Row
               label="Animais utilizados"

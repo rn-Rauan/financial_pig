@@ -1,11 +1,13 @@
 # Icons
 
-Baseline PWA icon. `icon.svg` is the working vector icon used during
-foundational phases and is the only icon referenced today (by
-`index.html`, `public/manifest.webmanifest`, and the PWA plugin in
-`vite.config.ts`).
+PWA icons for Financial Pig.
 
-Raster icons (`icon-192.png`, `icon-512.png`) and the `apple-touch-icon` are
-added in the PWA story (tasks T089–T090). When they land, re-add their entries
-to the manifest, the `<link rel="apple-touch-icon">` in `index.html`, and the
-plugin `includeAssets` list.
+- `icon.svg`: source vector used as the browser favicon and generic manifest
+  icon.
+- `icon-180.png`: Apple touch icon referenced by `index.html`.
+- `icon-192.png` and `icon-512.png`: installable PWA icons referenced by
+  `public/manifest.webmanifest` and precached by the PWA plugin in
+  `vite.config.ts`.
+
+If the brand icon changes, regenerate the PNG files from the SVG source and keep
+the manifest, `index.html`, and `vite.config.ts` references in sync.
