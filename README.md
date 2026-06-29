@@ -101,7 +101,26 @@ On first login the app calls the `inicializar_dados` RPC, which creates the
 settings row and seeds the default stock items (Porcos/leitões, Milho, Ração)
 for that user. It is idempotent and safe to run on every login.
 
+## Usage
+
+1. Sign in with the single Supabase user (no in-app registration).
+2. On first login the baseline data is seeded automatically (settings + default
+   stock items).
+3. Início (dashboard): cash, receivables, revenue, costs, profit, stock and pig
+   indicators for the selected month, plus quick-add shortcuts.
+4. Vendas: register paid/partial/credit sales (stock and receivables update
+   automatically); open a sale to see its effects or inactivate it. "Contas a
+   receber" lists open sales and registers later payments.
+5. Estoque: view stock, register purchases, manual movements
+   (entrada/saída/perda/ajuste), and corn/feed consumption.
+6. Despesa / Gasto fixo (dashboard shortcuts): record animal expenses and
+   fixed/construction costs separately.
+7. Relatórios: monthly summary, pig analysis, and a filterable history.
+8. Perfil: install the PWA and sign out.
+
 ## Deployment (Vercel or Netlify)
+
+Deployed URL: _to be added after the first deploy (task T103)._
 
 The app is a static SPA built with Vite plus an installable PWA service worker.
 
@@ -124,6 +143,20 @@ final URL here (task T103).
   `icon-180.png` for Apple touch).
 - Service worker: configured via `vite-plugin-pwa` in `vite.config.ts`
   (`registerType: autoUpdate`, SPA `navigateFallback`).
+
+## Manual validation status
+
+This project uses documented manual validation instead of automated tests (see
+[docs/manual-validation.md](docs/manual-validation.md)). All eight user stories
+are implemented and the app builds clean (`npm run typecheck`, `npm run build`).
+
+Pending manual validation (require a live Supabase project and/or a deploy):
+
+- Per user story: T031 (auth), T041 (dashboard), T052 (sales), T060
+  (receivables), T071 (stock), T078 (costs), T088 (reports/soft delete), T095
+  (PWA on deploy).
+- Final delivery: T100 (record dataset results), T102 (full quickstart
+  checklist), T103 (deploy + record URL).
 
 ## CI
 

@@ -74,7 +74,7 @@ export function PigAnalysisPage() {
         ) : (
           <section className="flex flex-col gap-2 rounded-xl bg-white p-4 shadow-sm">
             <Row label="Receita porco / carne" value={formatCurrency(data.receitaPorcoCarne)} strong />
-            <Row label="Compra de porcos / leitÃµes" value={formatCurrency(data.comprasPorcos)} />
+            <Row label="Compra de porcos / leitões" value={formatCurrency(data.comprasPorcos)} />
             <Row
               label="Receita - compra de porcos"
               value={formatCurrency(resultadoPorcos)}

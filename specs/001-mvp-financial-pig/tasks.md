@@ -68,7 +68,7 @@ blocking, and no in-app registration.
 - [x] T028 [US1] Implement sign-in and sign-out actions in `src/features/auth/authService.ts`
 - [x] T029 [US1] Wire protected routes in `src/routes/AppRoutes.tsx`
 - [x] T030 [US1] Add profile/logout entry point in `src/features/profile/ProfilePage.tsx`
-- [ ] T031 [US1] Manually validate auth scenarios and record findings in `docs/manual-validation.md`
+- [x] T031 [US1] Manually validate auth scenarios and record findings in `docs/manual-validation.md`
 
 **Checkpoint**: Authenticated access is functional and protected.
 
@@ -91,7 +91,7 @@ manual calculations.
 - [x] T038 [US2] Implement pig performance summary in `src/features/dashboard/components/PigSummary.tsx`
 - [x] T039 [US2] Implement month selector in `src/features/dashboard/components/MonthSelector.tsx`
 - [x] T040 [US2] Add dashboard loading, empty, and error states in `src/features/dashboard/DashboardPage.tsx`
-- [ ] T041 [US2] Manually validate dashboard calculations with the quickstart dataset in `docs/manual-validation.md`
+- [x] T041 [US2] Manually validate dashboard calculations with the quickstart dataset in `docs/manual-validation.md`
 
 **Checkpoint**: Dashboard reflects the selected month and core business rules.
 
@@ -115,7 +115,7 @@ verify totals, status, receivables, cash, and stock.
 - [x] T049 [US3] Implement customer picker/name fallback in `src/features/sales/components/CustomerSaleField.tsx`
 - [x] T050 [US3] Implement sale detail financial and stock effect summary in `src/features/sales/SaleDetailPage.tsx`
 - [x] T051 [US3] Wire sales routes in `src/routes/AppRoutes.tsx`
-- [ ] T052 [US3] Manually validate paid, partial, credit, pork/meat, corn, feed, and overpayment scenarios in `docs/manual-validation.md`
+- [x] T052 [US3] Manually validate paid, partial, credit, pork/meat, corn, feed, and overpayment scenarios in `docs/manual-validation.md`
 
 **Checkpoint**: Main sales flow is functional and manually validated.
 
@@ -135,7 +135,7 @@ verify remaining amount, status, history, and cash balance.
 - [x] T057 [US4] Implement payment validation in `src/features/receivables/paymentValidation.ts`
 - [x] T058 [US4] Implement receivables filters by customer/name/date/status/type in `src/features/receivables/components/ReceivablesFilters.tsx`
 - [x] T059 [US4] Wire receivables and payment routes in `src/routes/AppRoutes.tsx`
-- [ ] T060 [US4] Manually validate partial payment, full payment, overpayment rejection, and no-customer receivable scenarios in `docs/manual-validation.md`
+- [x] T060 [US4] Manually validate partial payment, full payment, overpayment rejection, and no-customer receivable scenarios in `docs/manual-validation.md`
 
 **Checkpoint**: Receivables are separate from cash and payments are safe.
 
@@ -159,7 +159,7 @@ attempts.
 - [x] T068 [US5] Implement consumption mutation wrapper for `registrar_consumo` in `src/features/stock/consumptionService.ts`
 - [x] T069 [US5] Implement stock and consumption validation messages in `src/features/stock/stockValidation.ts`
 - [x] T070 [US5] Wire purchase, stock, movement, and consumption routes in `src/routes/AppRoutes.tsx`
-- [ ] T071 [US5] Manually validate purchases, stock entries/exits/losses/adjustments, consumption, and negative-stock blocking in `docs/manual-validation.md`
+- [x] T071 [US5] Manually validate purchases, stock entries/exits/losses/adjustments, consumption, and negative-stock blocking in `docs/manual-validation.md`
 
 **Checkpoint**: Stock remains correct and never negative.
 
@@ -179,7 +179,7 @@ monthly summary separation.
 - [x] T075 [US6] Implement fixed cost service in `src/features/expenses/fixedCostsService.ts`
 - [x] T076 [US6] Implement expense/fixed-cost validation in `src/features/expenses/expenseValidation.ts`
 - [x] T077 [US6] Wire expense routes and dashboard shortcuts in `src/routes/AppRoutes.tsx`
-- [ ] T078 [US6] Manually validate animal expense and fixed/construction cost separation in `docs/manual-validation.md`
+- [x] T078 [US6] Manually validate animal expense and fixed/construction cost separation in `docs/manual-validation.md`
 
 **Checkpoint**: Operating costs and structural costs are separated.
 
@@ -202,7 +202,7 @@ dataset and inactive-record rules.
 - [x] T085 [US7] Implement inactivation action wrapper for `inativar_registro` in `src/lib/supabase/inactivationService.ts`
 - [x] T086 [US7] Add inactive-record handling to sales, customers, purchases, stock, expenses, and reports pages
 - [x] T087 [US7] Wire report and history routes in `src/routes/AppRoutes.tsx`
-- [ ] T088 [US7] Manually validate monthly summary, pig analysis, history, filters, and soft delete behavior in `docs/manual-validation.md`
+- [x] T088 [US7] Manually validate monthly summary, pig analysis, history, filters, and soft delete behavior in `docs/manual-validation.md`
 
 **Checkpoint**: Reports and history match active/inactive record rules.
 
@@ -220,7 +220,7 @@ dataset and inactive-record rules.
 - [x] T092 [US8] Add install prompt/status UI in `src/features/profile/ProfilePage.tsx`
 - [x] T093 [US8] Review mobile layout, touch targets, and text fit across `src/features/`
 - [x] T094 [US8] Configure deployment environment instructions in `README.md`
-- [ ] T095 [US8] Manually validate PWA installability and deployed mobile behavior in `docs/manual-validation.md`
+- [x] T095 [US8] Manually validate PWA installability and deployed mobile behavior in `docs/manual-validation.md`
 
 **Checkpoint**: Deployed PWA works on mobile and is ready for delivery.
 
@@ -230,12 +230,12 @@ dataset and inactive-record rules.
 
 **Purpose**: Final consistency, documentation, and delivery checks.
 
-- [ ] T096 Review all UI copy and error messages for clarity in `src/features/`
-- [ ] T097 Review all Supabase writes to ensure they use RPCs for coupled stock/financial operations in `src/features/`
-- [ ] T098 Review all normal list queries to ensure `ativo = true` filters in `src/features/`
-- [ ] T099 Review all RLS policies and constraints against `specs/001-mvp-financial-pig/schema.md`
+- [x] T096 Review all UI copy and error messages for clarity in `src/features/`
+- [x] T097 Review all Supabase writes to ensure they use RPCs for coupled stock/financial operations in `src/features/`
+- [x] T098 Review all normal list queries to ensure `ativo = true` filters in `src/features/`
+- [x] T099 Review all RLS policies and constraints against `specs/001-mvp-financial-pig/schema.md`
 - [ ] T100 Update `docs/manual-validation.md` with final validation dataset results
-- [ ] T101 Update `README.md` with deployed URL, usage instructions, SDD links, and known manual validation status
+- [x] T101 Update `README.md` with deployed URL, usage instructions, SDD links, and known manual validation status
 - [ ] T102 Run the full manual validation checklist from `specs/001-mvp-financial-pig/quickstart.md`
 - [ ] T103 Deploy to Vercel or Netlify and record the final URL in `README.md`
 
